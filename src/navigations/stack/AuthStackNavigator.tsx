@@ -1,5 +1,4 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
 
 import {authNavigations} from '@/constants';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -17,7 +16,13 @@ const Stack = createStackNavigator<AuthStackParamList>();
 
 const AuthStackNavigator = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        cardStyle: {
+          backgroundColor: 'white',
+        },
+        headerShown: false,
+      }}>
       <Stack.Screen
         name={authNavigations.LANGUAGE}
         component={LanguageScreen}
@@ -42,7 +47,5 @@ const AuthStackNavigator = () => {
     </Stack.Navigator>
   );
 };
-
-const styles = StyleSheet.create({});
 
 export default AuthStackNavigator;
