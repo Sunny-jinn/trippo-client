@@ -6,7 +6,7 @@ import {AuthStackParamList} from '@/navigations/stack/AuthStackNavigator';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {SafeAreaView, StyleSheet, View} from 'react-native';
 
 interface LanguageScreenProps {}
 
@@ -18,7 +18,7 @@ const LanguageScreen = ({}: LanguageScreenProps) => {
   };
 
   return (
-    <View>
+    <SafeAreaView style={styles.container}>
       <GoBackButton />
       <AuthExplain
         title="언어 선택"
@@ -31,11 +31,15 @@ const LanguageScreen = ({}: LanguageScreenProps) => {
           ),
         )}
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginHorizontal: 20,
+  },
   buttonContainer: {
     marginVertical: 68,
     gap: 24,

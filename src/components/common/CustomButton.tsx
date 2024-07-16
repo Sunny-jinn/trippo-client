@@ -31,7 +31,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingVertical: 18,
-    marginHorizontal: 20,
     borderRadius: 16,
   },
   pressedButton: {

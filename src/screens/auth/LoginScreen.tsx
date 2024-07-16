@@ -7,7 +7,14 @@ import {AuthStackParamList} from '@/navigations/stack/AuthStackNavigator';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import React from 'react';
-import {Pressable, StyleSheet, Text, TextInput, View} from 'react-native';
+import {
+  Pressable,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
 
 interface LoginScreenProps {}
 
@@ -18,7 +25,7 @@ const LoginScreen = ({}: LoginScreenProps) => {
     navigation.navigate(authNavigations.SIGN_UP);
   };
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <GoBackButton />
       <AuthExplain
         title="로그인"
@@ -38,18 +45,18 @@ const LoginScreen = ({}: LoginScreenProps) => {
           <Text style={styles.signUpText}>회원가입 </Text>
         </Pressable>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginHorizontal: 20,
   },
   inputContainer: {
     gap: 24,
     marginTop: 40,
-    marginHorizontal: 20,
   },
   findPasswordContainer: {
     width: '100%',
@@ -58,7 +65,6 @@ const styles = StyleSheet.create({
   },
   findPassword: {
     marginLeft: 'auto',
-    marginRight: 20,
     color: colors.ORANGE,
     fontWeight: '500',
   },

@@ -10,9 +10,7 @@ const GoBackButton = () => {
   const insets = useSafeAreaInsets();
 
   return (
-    <Pressable
-      style={[styles.container, {marginTop: insets.top + 8}]}
-      onPress={() => navigation.goBack()}>
+    <Pressable style={[styles.container]} onPress={() => navigation.goBack()}>
       <Ionicons name="chevron-back-outline" size={17} color={colors.BLACK} />
     </Pressable>
   );
@@ -23,10 +21,10 @@ const styles = StyleSheet.create({
     width: 44,
     height: 44,
     borderRadius: 22,
+    marginTop: 8,
     backgroundColor: colors.GRAY_500,
     justifyContent: 'center',
     alignItems: 'center',
-    marginHorizontal: 20,
   },
 });
 
