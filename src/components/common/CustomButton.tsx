@@ -5,18 +5,19 @@ import {Pressable, StyleSheet, Text} from 'react-native';
 interface CustomButtonProps {
   label: string;
   onPress?: () => void;
+  filled?: boolean;
 }
 
-const CustomButton = ({label, onPress}: CustomButtonProps) => {
+const CustomButton = ({label, onPress, filled = false}: CustomButtonProps) => {
   return (
     <Pressable
       onPress={onPress}
       style={({pressed}) => [
         styles.container,
-        pressed && styles.pressedButton,
+        (pressed || filled) && styles.pressedButton,
       ]}>
       {({pressed}) => (
-        <Text style={[styles.text, pressed && styles.pressedText]}>
+        <Text style={[styles.text, (pressed || filled) && styles.pressedText]}>
           {label}
         </Text>
       )}
