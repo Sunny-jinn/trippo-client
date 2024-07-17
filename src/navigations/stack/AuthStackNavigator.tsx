@@ -5,11 +5,13 @@ import {createStackNavigator} from '@react-navigation/stack';
 import LanguageScreen from '@/screens/auth/LanguageScreen';
 import LoginScreen from '@/screens/auth/LoginScreen';
 import SignUpScreen from '@/screens/auth/SignUpScreen';
+import ForgotPasswordScreen from '@/screens/auth/ForgotPasswordScreen';
 
 export type AuthStackParamList = {
   [authNavigations.LANGUAGE]: undefined;
   [authNavigations.LOGIN]: undefined;
   [authNavigations.SIGN_UP]: undefined;
+  [authNavigations.FORGOT_PASSWORD]: undefined;
 };
 
 const Stack = createStackNavigator<AuthStackParamList>();
@@ -42,6 +44,13 @@ const AuthStackNavigator = () => {
         component={SignUpScreen}
         options={{
           headerTitle: '회원가입',
+        }}
+      />
+      <Stack.Screen
+        name={authNavigations.FORGOT_PASSWORD}
+        component={ForgotPasswordScreen}
+        options={{
+          headerTitle: '',
         }}
       />
     </Stack.Navigator>

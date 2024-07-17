@@ -1,29 +1,28 @@
-import AuthExplain from '@/components/auth/AuthExplain';
-import CustomButton from '@/components/common/CustomButton';
-import CustomInputField from '@/components/common/CustomInputField';
-import GoBackButton from '@/components/common/GoBackButton';
-import {authNavigations, colors} from '@/constants';
-import {AuthStackParamList} from '@/navigations/stack/AuthStackNavigator';
+import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
-import React from 'react';
-import {
-  Pressable,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from 'react-native';
+import {Pressable, SafeAreaView, StyleSheet, Text, View} from 'react-native';
+
+import AuthExplain from '@/components/auth/AuthExplain';
+import CustomButton from '@/components/common/CustomButton';
+import GoBackButton from '@/components/common/GoBackButton';
+import CustomInputField from '@/components/common/CustomInputField';
+import {AuthStackParamList} from '@/navigations/stack/AuthStackNavigator';
+import {authNavigations, colors} from '@/constants';
 
 interface LoginScreenProps {}
 
 const LoginScreen = ({}: LoginScreenProps) => {
   const navigation = useNavigation<StackNavigationProp<AuthStackParamList>>();
 
-  const pressHandler = () => {
+  const handleSignUpPress = () => {
     navigation.navigate(authNavigations.SIGN_UP);
   };
+
+  const handlePasswordPress = () => {
+    navigation.navigate(authNavigations.FORGOT_PASSWORD);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <GoBackButton />
@@ -36,12 +35,14 @@ const LoginScreen = ({}: LoginScreenProps) => {
         <CustomInputField placeholder="password" password />
       </View>
       <View style={styles.findPasswordContainer}>
-        <Text style={styles.findPassword}>비밀번호를 잊으셨나요?</Text>
+        <Pressable onPress={handlePasswordPress}>
+          <Text style={styles.findPassword}>비밀번호를 잊으셨나요?</Text>
+        </Pressable>
       </View>
       <CustomButton label="로그인" filled />
       <View style={styles.signUpContainer}>
         <Text style={styles.noAccountText}>계정이 없으신가요?</Text>
-        <Pressable onPress={pressHandler}>
+        <Pressable onPress={handleSignUpPress}>
           <Text style={styles.signUpText}>회원가입 </Text>
         </Pressable>
       </View>
