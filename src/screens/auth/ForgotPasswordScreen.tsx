@@ -1,15 +1,16 @@
-import AuthExplain from '@/components/auth/AuthExplain';
-import ForgotPasswordModal from '@/components/auth/ForgotPasswordModal';
-import CustomButton from '@/components/common/CustomButton';
-import CustomInputField from '@/components/common/CustomInputField';
-import GoBackButton from '@/components/common/GoBackButton';
-import {authNavigations} from '@/constants';
-import {useModal} from '@/hooks/useModal';
-import {AuthStackParamList} from '@/navigations/stack/AuthStackNavigator';
+import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
-import React from 'react';
-import {Pressable, SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {Pressable, SafeAreaView, StyleSheet, View} from 'react-native';
+
+import {useModal} from '@/hooks/useModal';
+import AuthExplain from '@/components/auth/AuthExplain';
+import CustomButton from '@/components/common/CustomButton';
+import GoBackButton from '@/components/common/GoBackButton';
+import CustomInputField from '@/components/common/CustomInputField';
+import {authNavigations} from '@/constants';
+import ForgotPasswordModal from '@/components/auth/ForgotPasswordModal';
+import {AuthStackParamList} from '@/navigations/stack/AuthStackNavigator';
 
 interface ForgotPasswordScreeProps {}
 
@@ -30,7 +31,7 @@ const ForgotPasswordScreen = ({}: ForgotPasswordScreeProps) => {
         />
       </Pressable>
       <View style={styles.inputContainer}>
-        <CustomInputField placeholder="이메일" />
+        <CustomInputField placeholder="이메일" inputMode="email" />
       </View>
       <View style={styles.buttonContainer}>
         <CustomButton

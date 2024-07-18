@@ -1,5 +1,6 @@
 import {colors} from '@/constants';
-import React, {useRef, useState} from 'react';
+import {mergeRefs} from '@/utils';
+import React, {ForwardedRef, forwardRef, useRef, useState} from 'react';
 import {
   Dimensions,
   Pressable,
@@ -17,47 +18,48 @@ interface CustomInputFieldProps extends TextInputProps {
 
 const deviceHeight = Dimensions.get('screen').height;
 
-const CustomInputField = ({
-  placeholder,
-  password,
-  ...props
-}: CustomInputFieldProps) => {
-  const inputRef = useRef<TextInput | null>(null);
+const CustomInputField = forwardRef(
+  (
+    {placeholder, password, ...props}: CustomInputFieldProps,
+    ref?: ForwardedRef<TextInput>,
+  ) => {
+    const inputRef = useRef<TextInput | null>(null);
 
-  const [isVisible, setIsVisible] = useState(false);
+    const [isVisible, setIsVisible] = useState(false);
 
-  const pressHandler = () => {
-    inputRef.current?.focus();
-  };
+    const pressHandler = () => {
+      inputRef.current?.focus();
+    };
 
-  return (
-    <Pressable onPress={pressHandler}>
-      <View style={styles.container}>
-        <TextInput
-          ref={inputRef}
-          style={styles.textInput}
-          placeholder={placeholder}
-          autoCapitalize="none"
-          spellCheck={false}
-          autoCorrect={false}
-          secureTextEntry={password && !isVisible}
-          {...props}
-        />
-        {password && (
-          <Pressable
-            style={styles.visibleIcon}
-            onPress={() => setIsVisible(prev => !prev)}>
-            <Ionicons
-              name={!isVisible ? 'eye-off-outline' : 'eye-outline'}
-              size={25}
-              color={colors.GRAY_700}
-            />
-          </Pressable>
-        )}
-      </View>
-    </Pressable>
-  );
-};
+    return (
+      <Pressable onPress={pressHandler}>
+        <View style={styles.container}>
+          <TextInput
+            ref={ref ? mergeRefs(inputRef, ref) : inputRef}
+            style={styles.textInput}
+            placeholder={placeholder}
+            autoCapitalize="none"
+            spellCheck={false}
+            autoCorrect={false}
+            secureTextEntry={password && !isVisible}
+            {...props}
+          />
+          {password && (
+            <Pressable
+              style={styles.visibleIcon}
+              onPress={() => setIsVisible(prev => !prev)}>
+              <Ionicons
+                name={!isVisible ? 'eye-off-outline' : 'eye-outline'}
+                size={25}
+                color={colors.GRAY_700}
+              />
+            </Pressable>
+          )}
+        </View>
+      </Pressable>
+    );
+  },
+);
 
 const styles = StyleSheet.create({
   container: {

@@ -1,7 +1,14 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {Pressable, SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {
+  Pressable,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
 
 import AuthExplain from '@/components/auth/AuthExplain';
 import CustomButton from '@/components/common/CustomButton';
@@ -13,6 +20,8 @@ import {authNavigations, colors} from '@/constants';
 interface LoginScreenProps {}
 
 const LoginScreen = ({}: LoginScreenProps) => {
+  const passwordRef = useRef<TextInput | null>(null);
+
   const navigation = useNavigation<StackNavigationProp<AuthStackParamList>>();
 
   const handleSignUpPress = () => {
@@ -31,8 +40,14 @@ const LoginScreen = ({}: LoginScreenProps) => {
         subTitle="서비스를 계속 이용하시려면 로그인 해주세요."
       />
       <View style={styles.inputContainer}>
-        <CustomInputField placeholder="id" />
-        <CustomInputField placeholder="password" password />
+        <CustomInputField
+          placeholder="id"
+          inputMode="email"
+          returnKeyType="next"
+          blurOnSubmit={false}
+          onSubmitEditing={() => passwordRef.current?.focus()}
+        />
+        <CustomInputField placeholder="password" password ref={passwordRef} />
       </View>
       <View style={styles.findPasswordContainer}>
         <Pressable onPress={handlePasswordPress}>

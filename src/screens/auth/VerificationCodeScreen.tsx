@@ -1,7 +1,3 @@
-import AuthExplain from '@/components/auth/AuthExplain';
-import CustomButton from '@/components/common/CustomButton';
-import GoBackButton from '@/components/common/GoBackButton';
-import {colors} from '@/constants';
 import React, {useRef} from 'react';
 import {
   StyleSheet,
@@ -11,6 +7,11 @@ import {
   TextInput,
   Keyboard,
 } from 'react-native';
+
+import {colors} from '@/constants';
+import AuthExplain from '@/components/auth/AuthExplain';
+import CustomButton from '@/components/common/CustomButton';
+import GoBackButton from '@/components/common/GoBackButton';
 
 interface VerificationCodeScreenProps {}
 
@@ -58,6 +59,7 @@ const VerificationCodeScreen = ({}: VerificationCodeScreenProps) => {
         <Text style={styles.codeText}>인증 코드</Text>
         <View style={styles.codeInputContainer}>
           <TextInput
+            autoFocus
             style={styles.codeInput}
             inputMode="numeric"
             maxLength={1}
