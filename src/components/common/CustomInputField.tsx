@@ -11,7 +11,7 @@ import {
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 interface CustomInputFieldProps extends TextInputProps {
-  placeholder: string;
+  placeholder?: string;
   password?: boolean;
 }
 
@@ -40,7 +40,7 @@ const CustomInputField = ({
           autoCapitalize="none"
           spellCheck={false}
           autoCorrect={false}
-          secureTextEntry={!isVisible}
+          secureTextEntry={password && !isVisible}
           {...props}
         />
         {password && (

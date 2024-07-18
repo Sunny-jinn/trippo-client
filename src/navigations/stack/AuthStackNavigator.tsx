@@ -6,12 +6,14 @@ import LanguageScreen from '@/screens/auth/LanguageScreen';
 import LoginScreen from '@/screens/auth/LoginScreen';
 import SignUpScreen from '@/screens/auth/SignUpScreen';
 import ForgotPasswordScreen from '@/screens/auth/ForgotPasswordScreen';
+import VerificationCodeScreen from '@/screens/auth/VerificationCodeScreen';
 
 export type AuthStackParamList = {
   [authNavigations.LANGUAGE]: undefined;
   [authNavigations.LOGIN]: undefined;
   [authNavigations.SIGN_UP]: undefined;
   [authNavigations.FORGOT_PASSWORD]: undefined;
+  [authNavigations.VERIFICATION_CODE]: undefined;
 };
 
 const Stack = createStackNavigator<AuthStackParamList>();
@@ -49,6 +51,13 @@ const AuthStackNavigator = () => {
       <Stack.Screen
         name={authNavigations.FORGOT_PASSWORD}
         component={ForgotPasswordScreen}
+        options={{
+          headerTitle: '',
+        }}
+      />
+      <Stack.Screen
+        name={authNavigations.VERIFICATION_CODE}
+        component={VerificationCodeScreen}
         options={{
           headerTitle: '',
         }}

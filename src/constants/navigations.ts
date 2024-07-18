@@ -3,4 +3,5 @@ export const authNavigations = {
   LOGIN: 'Login',
   SIGN_UP: 'SignUp',
   FORGOT_PASSWORD: 'ForgotPassword',
+  VERIFICATION_CODE: 'VerificationCode',
 } as const;
