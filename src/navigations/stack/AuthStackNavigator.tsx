@@ -8,6 +8,7 @@ import SignUpScreen from '@/screens/auth/SignUpScreen';
 import ForgotPasswordScreen from '@/screens/auth/ForgotPasswordScreen';
 import VerificationCodeScreen from '@/screens/auth/VerificationCodeScreen';
 import {StatusBar} from 'react-native';
+import WalkthroughScreen from '@/screens/walkthrough/WalkthroughScreen';
 
 export type AuthStackParamList = {
   [authNavigations.LANGUAGE]: undefined;
@@ -15,6 +16,7 @@ export type AuthStackParamList = {
   [authNavigations.SIGN_UP]: undefined;
   [authNavigations.FORGOT_PASSWORD]: undefined;
   [authNavigations.VERIFICATION_CODE]: undefined;
+  [authNavigations.WALKTHROUGH]: undefined;
 };
 
 const Stack = createStackNavigator<AuthStackParamList>();
@@ -30,6 +32,13 @@ const AuthStackNavigator = () => {
           },
           headerShown: false,
         }}>
+        <Stack.Screen
+          name={authNavigations.WALKTHROUGH}
+          component={WalkthroughScreen}
+          options={{
+            headerTitle: '',
+          }}
+        />
         <Stack.Screen
           name={authNavigations.LANGUAGE}
           component={LanguageScreen}
