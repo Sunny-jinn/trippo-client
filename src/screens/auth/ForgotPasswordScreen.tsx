@@ -11,11 +11,14 @@ import CustomInputField from '@/components/common/CustomInputField';
 import {authNavigations} from '@/constants';
 import ForgotPasswordModal from '@/components/auth/ForgotPasswordModal';
 import {AuthStackParamList} from '@/navigations/stack/AuthStackNavigator';
+import {useTranslation} from 'react-i18next';
 
 interface ForgotPasswordScreeProps {}
 
 const ForgotPasswordScreen = ({}: ForgotPasswordScreeProps) => {
   const forgotPasswordModal = useModal();
+  const {t, i18n} = useTranslation();
+
   const navigation = useNavigation<StackNavigationProp<AuthStackParamList>>();
   const handlePress = () => {
     navigation.navigate(authNavigations.VERIFICATION_CODE);
@@ -26,17 +29,20 @@ const ForgotPasswordScreen = ({}: ForgotPasswordScreeProps) => {
       <GoBackButton />
       <Pressable onPress={handlePress}>
         <AuthExplain
-          title="비밀번호 찾기"
-          subTitle={'새로운 비밀번호를 받으실 \n이메일 계정을 입력해주세요.'}
+          title={t('forgotPassword.title')}
+          subTitle={t('forgotPassword.subTitle')}
         />
       </Pressable>
       <View style={styles.inputContainer}>
-        <CustomInputField placeholder="이메일" inputMode="email" />
+        <CustomInputField
+          placeholder={t('placeholder.email')}
+          inputMode="email"
+        />
       </View>
       <View style={styles.buttonContainer}>
         <CustomButton
           filled
-          label="비밀번호 찾기"
+          label={t('forgotPassword.title')}
           onPress={() => forgotPasswordModal.show()}
         />
       </View>

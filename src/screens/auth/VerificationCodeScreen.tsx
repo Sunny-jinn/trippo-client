@@ -12,6 +12,7 @@ import {colors} from '@/constants';
 import AuthExplain from '@/components/auth/AuthExplain';
 import CustomButton from '@/components/common/CustomButton';
 import GoBackButton from '@/components/common/GoBackButton';
+import {useTranslation} from 'react-i18next';
 
 interface VerificationCodeScreenProps {}
 
@@ -20,6 +21,8 @@ const VerificationCodeScreen = ({}: VerificationCodeScreenProps) => {
   const input2Ref = useRef<TextInput>(null);
   const input3Ref = useRef<TextInput>(null);
   const input4Ref = useRef<TextInput>(null);
+
+  const {t, i18n} = useTranslation();
 
   const handleInputChange = (
     text: string,
@@ -52,11 +55,11 @@ const VerificationCodeScreen = ({}: VerificationCodeScreenProps) => {
     <SafeAreaView style={styles.container}>
       <GoBackButton />
       <AuthExplain
-        title="인증코드 입력"
-        subTitle="이메일로 전송된 인증 코드를 확인해 입력해주세요."
+        title={t('verificationCode.title')}
+        subTitle={t('verificationCode.subTitle')}
       />
       <View style={styles.codeContainer}>
-        <Text style={styles.codeText}>인증 코드</Text>
+        <Text style={styles.codeText}>{t('verificationCode.text')}</Text>
         <View style={styles.codeInputContainer}>
           <TextInput
             autoFocus
@@ -94,7 +97,7 @@ const VerificationCodeScreen = ({}: VerificationCodeScreenProps) => {
         </View>
       </View>
       <View style={styles.buttonContainer}>
-        <CustomButton filled label="확인" />
+        <CustomButton filled label="Check" />
       </View>
     </SafeAreaView>
   );

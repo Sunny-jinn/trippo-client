@@ -1,9 +1,11 @@
 import CustomButton from '@/components/common/CustomButton';
 import {authNavigations, colors} from '@/constants';
 import {AuthStackParamList} from '@/navigations/stack/AuthStackNavigator';
+import {getEncryptStorage} from '@/utils/encryptStorage';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
-import React from 'react';
+import React, {useEffect} from 'react';
+import {useTranslation} from 'react-i18next';
 import {
   Image,
   Pressable,
@@ -23,6 +25,16 @@ const WalkthroughScreen = ({}: WalkthroughScreenProps) => {
   const handlePress = () => {
     navigation.navigate(authNavigations.LANGUAGE);
   };
+
+  const {t, i18n} = useTranslation();
+
+  useEffect(() => {
+    const getData = async () => {
+      const lang = await getEncryptStorage('lang');
+      i18n.changeLanguage(lang);
+    };
+    getData();
+  }, []);
 
   return (
     <View style={styles.container}>

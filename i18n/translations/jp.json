@@ -1,0 +1,35 @@
+{
+  "LanguageSelect": {
+    "title": "言語選択",
+    "subTitle": "サービスを利用する際に使用する言語を選択してください。"
+  },
+  "login": {
+    "title": "ログイン",
+    "subTitle": "サービスを利用し続けるにはログインしてください。",
+    "forgotPassword": "パスワードをお忘れですか？",
+    "noAccount": "アカウントがありませんか？",
+    "signup": "サインアップ"
+  },
+  "forgotPassword": {
+    "title": "パスワードを忘れた",
+    "subTitle": "新しいパスワードを受け取るメールアカウントを入力してください。",
+    "modalTitle": "メールを確認してください",
+    "modalSubTitle": "新しいパスワードが提供されたメールに送信されました。"
+  },
+  "verificationCode": {
+    "title": "認証コードを入力",
+    "subTitle": "メールで送信された認証コードを確認し、入力してください。",
+    "text": "認証コード"
+  },
+  "signup": {
+    "title": "サインアップ",
+    "subTitle": "サービスを利用し続けるにはサインアップしてください。",
+    "text": "パスワードは8文字以上に設定してください。"
+  },
+  "placeholder": {
+    "id": "ID",
+    "email": "メール",
+    "password": "パスワード",
+    "passwordConfirm": "パスワード確認"
+  }
+}

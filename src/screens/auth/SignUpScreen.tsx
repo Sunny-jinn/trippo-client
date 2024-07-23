@@ -6,31 +6,29 @@ import AuthExplain from '@/components/auth/AuthExplain';
 import CustomButton from '@/components/common/CustomButton';
 import GoBackButton from '@/components/common/GoBackButton';
 import CustomInputField from '@/components/common/CustomInputField';
+import {useTranslation} from 'react-i18next';
 
-interface SignUpScreenProps {}
-
-const SignUpScreen = ({}: SignUpScreenProps) => {
+const SignUpScreen = () => {
   const emailRef = useRef<TextInput | null>(null);
   const passwordRef = useRef<TextInput | null>(null);
   const passwordConfirmRef = useRef<TextInput | null>(null);
 
+  const {t, i18n} = useTranslation();
+
   return (
     <SafeAreaView style={styles.container}>
       <GoBackButton />
-      <AuthExplain
-        title="회원가입"
-        subTitle="서비스를 계속 이용하시려면 회원가입 해주세요."
-      />
+      <AuthExplain title={t('signup.title')} subTitle={t('signup.subTitle')} />
       <View style={styles.inputContainer}>
         <CustomInputField
-          placeholder="아이디"
+          placeholder={t('placeholder.id')}
           returnKeyType="next"
           blurOnSubmit={false}
           onSubmitEditing={() => emailRef.current?.focus()}
         />
         <CustomInputField
           ref={emailRef}
-          placeholder="이메일"
+          placeholder={t('placeholder.email')}
           returnKeyType="next"
           inputMode="email"
           blurOnSubmit={false}
@@ -38,7 +36,7 @@ const SignUpScreen = ({}: SignUpScreenProps) => {
         />
         <CustomInputField
           ref={passwordRef}
-          placeholder="비밀번호"
+          placeholder={t('placeholder.password')}
           password
           returnKeyType="next"
           blurOnSubmit={false}
@@ -46,13 +44,13 @@ const SignUpScreen = ({}: SignUpScreenProps) => {
         />
         <CustomInputField
           ref={passwordConfirmRef}
-          placeholder="비밀번호 확인"
+          placeholder={t('placeholder.passwordConfirm')}
           password
           returnKeyType="join"
         />
       </View>
-      <Text style={styles.passwordText}>비밀번호는 8자 이상 설정해주세요.</Text>
-      <CustomButton label="회원가입" filled />
+      <Text style={styles.passwordText}>{t('signup.text')}</Text>
+      <CustomButton label={t('signup.title')} filled />
     </SafeAreaView>
   );
 };

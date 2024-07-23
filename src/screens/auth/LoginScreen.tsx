@@ -16,11 +16,13 @@ import GoBackButton from '@/components/common/GoBackButton';
 import CustomInputField from '@/components/common/CustomInputField';
 import {AuthStackParamList} from '@/navigations/stack/AuthStackNavigator';
 import {authNavigations, colors} from '@/constants';
+import {useTranslation} from 'react-i18next';
 
 interface LoginScreenProps {}
 
 const LoginScreen = ({}: LoginScreenProps) => {
   const passwordRef = useRef<TextInput | null>(null);
+  const {t, i18n} = useTranslation();
 
   const navigation = useNavigation<StackNavigationProp<AuthStackParamList>>();
 
@@ -35,30 +37,31 @@ const LoginScreen = ({}: LoginScreenProps) => {
   return (
     <SafeAreaView style={styles.container}>
       <GoBackButton />
-      <AuthExplain
-        title="로그인"
-        subTitle="서비스를 계속 이용하시려면 로그인 해주세요."
-      />
+      <AuthExplain title={t('login.title')} subTitle={t('login.subTitle')} />
       <View style={styles.inputContainer}>
         <CustomInputField
-          placeholder="id"
+          placeholder={t('placeholder.id')}
           inputMode="email"
           returnKeyType="next"
           blurOnSubmit={false}
           onSubmitEditing={() => passwordRef.current?.focus()}
         />
-        <CustomInputField placeholder="password" password ref={passwordRef} />
+        <CustomInputField
+          placeholder={t('placeholder.password')}
+          password
+          ref={passwordRef}
+        />
       </View>
       <View style={styles.findPasswordContainer}>
         <Pressable onPress={handlePasswordPress}>
-          <Text style={styles.findPassword}>비밀번호를 잊으셨나요?</Text>
+          <Text style={styles.findPassword}>{t('login.forgotPassword')}</Text>
         </Pressable>
       </View>
-      <CustomButton label="로그인" filled />
+      <CustomButton label={t('login.title')} filled />
       <View style={styles.signUpContainer}>
-        <Text style={styles.noAccountText}>계정이 없으신가요?</Text>
+        <Text style={styles.noAccountText}>{t('login.noAccount')}</Text>
         <Pressable onPress={handleSignUpPress}>
-          <Text style={styles.signUpText}>회원가입 </Text>
+          <Text style={styles.signUpText}>{t('login.signup') + ' '} </Text>
         </Pressable>
       </View>
     </SafeAreaView>

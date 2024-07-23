@@ -1,5 +1,6 @@
 import {colors} from '@/constants';
 import React from 'react';
+import {useTranslation} from 'react-i18next';
 import {Modal, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -9,6 +10,8 @@ interface ForgotPasswordModalProps {
 }
 
 const ForgotPasswordModal = ({isVisible, hide}: ForgotPasswordModalProps) => {
+  const {t} = useTranslation();
+
   return (
     <Modal
       transparent={true}
@@ -20,9 +23,9 @@ const ForgotPasswordModal = ({isVisible, hide}: ForgotPasswordModalProps) => {
           <View style={styles.iconContainer}>
             <Ionicons name="mail-outline" size={25} color={colors.WHITE} />
           </View>
-          <Text style={styles.modalText}>이메일을 확인해주세요.</Text>
+          <Text style={styles.modalText}>{t('forgotPassword.modalTitle')}</Text>
           <Text style={styles.modalSubText}>
-            새로운 비밀번호를 입력해 주신{'\n'}이메일로 전송해 드렸습니다.
+            {t('forgotPassword.modalSubTitle')}
           </Text>
         </View>
       </TouchableOpacity>

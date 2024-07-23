@@ -1,0 +1,35 @@
+{
+  "LanguageSelect": {
+    "title": "Language Selection",
+    "subTitle": "Please select the language you will use while using the service."
+  },
+  "login": {
+    "title": "Login",
+    "subTitle": "Please log in to continue using the service.",
+    "forgotPassword": "Forgot Password?",
+    "noAccount": "Don't have an account?",
+    "signup": "Sign Up"
+  },
+  "forgotPassword": {
+    "title": "Forgot Password",
+    "subTitle": "Please enter the email account to receive a new password.",
+    "modalTitle": "Check Your Email",
+    "modalSubTitle": "A new password has been sent to\nthe email you provided."
+  },
+  "verificationCode": {
+    "title": "Enter Verification Code",
+    "subTitle": "Please check your email and enter the verification code.",
+    "text": "Verification Code"
+  },
+  "signup": {
+    "title": "Sign Up",
+    "subTitle": "Please sign up to continue using the service.",
+    "text": "Please set a password of at least 8 characters."
+  },
+  "placeholder": {
+    "id": "ID",
+    "email": "Email",
+    "password": "Password",
+    "passwordConfirm": "Confirm Password"
+  }
+}
