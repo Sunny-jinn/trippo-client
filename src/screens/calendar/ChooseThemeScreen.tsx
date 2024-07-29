@@ -2,6 +2,7 @@ import CustomButton from '@/components/common/CustomButton';
 import GoBackButton from '@/components/common/GoBackButton';
 import {calendarNavigations, colors} from '@/constants';
 import {CalendarStackParamList} from '@/navigations/stack/CalendarStackNavigator';
+import useScheduleStore from '@/store/useScheduleStore';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import React, {useState} from 'react';
@@ -37,6 +38,7 @@ const ChooseThemeScreen = ({}: ChooseThemeScreenProps) => {
   });
 
   const insets = useSafeAreaInsets();
+  const {setSelectedTags} = useScheduleStore();
 
   const navigation =
     useNavigation<StackNavigationProp<CalendarStackParamList>>();
@@ -56,6 +58,16 @@ const ChooseThemeScreen = ({}: ChooseThemeScreenProps) => {
   };
 
   const handlePressButton = () => {
+    const newWhomTags = Object.keys(selectedWhomTags)
+      .filter(tag => selectedWhomTags[tag])
+      .reduce((acc, tag) => ({...acc, [tag]: true}), {});
+
+    const newStyleTags = Object.keys(selectedStyleTags)
+      .filter(tag => selectedStyleTags[tag])
+      .reduce((acc, tag) => ({...acc, [tag]: true}), {});
+
+    setSelectedTags('Whom', newWhomTags);
+    setSelectedTags('Style', newStyleTags);
     navigation.navigate(calendarNavigations.SCHEDULE);
   };
 

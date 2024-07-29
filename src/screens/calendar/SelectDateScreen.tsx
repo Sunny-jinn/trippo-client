@@ -2,6 +2,7 @@ import CustomButton from '@/components/common/CustomButton';
 import GoBackButton from '@/components/common/GoBackButton';
 import {calendarNavigations, colors} from '@/constants';
 import {CalendarStackParamList} from '@/navigations/stack/CalendarStackNavigator';
+import useScheduleStore from '@/store/useScheduleStore';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import React, {useState, memo, useCallback} from 'react';
@@ -17,11 +18,18 @@ const SelectDateScreen = ({}: SelectDateScreenProps) => {
   const [startDate, setStartDate] = useState<string | null>(null);
   const [endDate, setEndDate] = useState<string | null>(null);
 
+  const {setStartDate: setStartDateValue, setEndDate: setEndDateValue} =
+    useScheduleStore();
+
   const navigation =
     useNavigation<StackNavigationProp<CalendarStackParamList>>();
 
   const pressHandler = () => {
-    navigation.navigate(calendarNavigations.CHOOSE_THEME);
+    if (startDate && endDate) {
+      setStartDateValue(new Date(startDate));
+      setEndDateValue(new Date(endDate));
+      navigation.navigate(calendarNavigations.CHOOSE_THEME);
+    }
   };
 
   const insets = useSafeAreaInsets();
