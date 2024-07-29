@@ -1,5 +1,6 @@
 import {calendarNavigations} from '@/constants';
 import ChooseThemeScreen from '@/screens/calendar/ChooseThemeScreen';
+import ScheduleScreen from '@/screens/calendar/ScheduleScreen';
 import SelectDateScreen from '@/screens/calendar/SelectDateScreen';
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
@@ -29,6 +30,10 @@ const CalendarStackNavigator = () => {
       <Stack.Screen
         name={calendarNavigations.CHOOSE_THEME}
         component={ChooseThemeScreen}
+      />
+      <Stack.Screen
+        name={calendarNavigations.SCHEDULE}
+        component={ScheduleScreen}
       />
     </Stack.Navigator>
   );
