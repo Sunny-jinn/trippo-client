@@ -18,13 +18,21 @@ import {colors} from '@/constants';
 import CustomButton from '@/components/common/CustomButton';
 import GoBackButton from '@/components/common/GoBackButton';
 import GoogleMapView from '@/components/common/GoogleMapView';
-import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
+import useScheduleStore from '@/store/useScheduleStore';
+import {formatDate} from '@/utils';
 
 interface ScheduleScreenProps {}
 
 const ScheduleScreen = ({}: ScheduleScreenProps) => {
   const bottomSheetRef = useRef<BottomSheet>(null);
-  const snapPoints = useMemo(() => ['5%', '90%'], []);
+  const snapPoints = useMemo(() => ['10%', '90%'], []);
+
+  const {startDate, endDate, selectedTags} = useScheduleStore();
+  console.log(
+    formatDate(startDate),
+    formatDate(endDate),
+    Object.keys(selectedTags.Whom)[0],
+  );
 
   const animationConfigs = useBottomSheetSpringConfigs({
     damping: 80,
@@ -44,12 +52,29 @@ const ScheduleScreen = ({}: ScheduleScreenProps) => {
             <Text style={styles.headerText}>Schedule</Text>
             <GoBackButton />
           </View>
-          <Text>Schedule</Text>
+          <View style={styles.topInnerContainer}>
+            <Text style={styles.scheduleNameText}>Jeju Trip 01</Text>
+            <Text style={styles.schedulePeriod}>
+              {`${formatDate(startDate)} - ${formatDate(endDate)}`}
+            </Text>
+            <View style={styles.scheduleTagsContainer}>
+              <View style={styles.scheduleTag}>
+                <Text style={styles.scheduleTagText}>
+                  {Object.keys(selectedTags.Whom)[0]}
+                </Text>
+              </View>
+              <View style={styles.scheduleTag}>
+                <Text style={styles.scheduleTagText}>
+                  {Object.keys(selectedTags.Style)[0]}
+                </Text>
+              </View>
+            </View>
+          </View>
         </SafeAreaView>
       </View>
       <View style={styles.bottomContainer}>
         <View style={styles.mapContainer}>
-          <GoogleMapView showsMyLocationButton />
+          <GoogleMapView />
         </View>
 
         <BottomSheet
@@ -60,7 +85,9 @@ const ScheduleScreen = ({}: ScheduleScreenProps) => {
           animateOnMount={true}>
           <BottomSheetScrollView style={styles.bottomSheetInner}>
             <View style={styles.bottomSheetHeaderContainer}>
-              <Text style={styles.scheduleDateText}>26 January 2024</Text>
+              <Text style={styles.scheduleDateText}>
+                {formatDate(startDate)}
+              </Text>
               <Pressable style={styles.scheduleEditButton}>
                 <Text style={styles.scheduleEditText}>Edit</Text>
               </Pressable>
@@ -107,10 +134,10 @@ const ScheduleScreen = ({}: ScheduleScreenProps) => {
 
 const styles = StyleSheet.create({
   topContainer: {
-    flex: 1,
+    flex: 0.8,
     backgroundColor: colors.BLUE_500,
-    // borderBottomRightRadius: 24,
-    // borderBottomLeftRadius: 24,
+    borderBottomRightRadius: 24,
+    borderBottomLeftRadius: 24,
     paddingHorizontal: 20,
   },
   headerContainer: {
@@ -127,6 +154,37 @@ const styles = StyleSheet.create({
   },
   mapContainer: {
     flex: 1,
+  },
+  topInnerContainer: {
+    marginTop: 30,
+    marginHorizontal: 16,
+    gap: 8,
+  },
+  scheduleNameText: {
+    fontSize: 20,
+    fontWeight: '600',
+    color: colors.WHITE,
+  },
+  schedulePeriod: {
+    color: colors.GRAY_300,
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  scheduleTagsContainer: {
+    marginTop: 3,
+    flexDirection: 'row',
+    gap: 8,
+  },
+  scheduleTag: {
+    backgroundColor: 'rgba(255, 255, 255, 0.56)',
+    borderRadius: 100,
+    paddingVertical: 8,
+    paddingHorizontal: 10,
+  },
+  scheduleTagText: {
+    color: colors.WHITE,
+    fontSize: 12,
+    fontWeight: '500',
   },
   bottomContainer: {
     flex: 2,
@@ -170,11 +228,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 16,
     marginTop: 16,
-
     shadowColor: colors.BLACK,
     shadowOpacity: 0.05,
     shadowRadius: 5,
-    elevation: 1.5,
+    elevation: 3,
   },
   scheduleThumbnail: {
     width: 80,
