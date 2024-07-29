@@ -20,19 +20,15 @@ import GoBackButton from '@/components/common/GoBackButton';
 import GoogleMapView from '@/components/common/GoogleMapView';
 import useScheduleStore from '@/store/useScheduleStore';
 import {formatDate} from '@/utils';
+import CustomBottomTap from '@/components/common/CustomBottomTap';
 
 interface ScheduleScreenProps {}
 
 const ScheduleScreen = ({}: ScheduleScreenProps) => {
   const bottomSheetRef = useRef<BottomSheet>(null);
-  const snapPoints = useMemo(() => ['10%', '90%'], []);
+  const snapPoints = useMemo(() => ['20%', '80%'], []);
 
   const {startDate, endDate, selectedTags} = useScheduleStore();
-  console.log(
-    formatDate(startDate),
-    formatDate(endDate),
-    Object.keys(selectedTags.Whom)[0],
-  );
 
   const animationConfigs = useBottomSheetSpringConfigs({
     damping: 80,
@@ -127,6 +123,7 @@ const ScheduleScreen = ({}: ScheduleScreenProps) => {
             </View>
           </BottomSheetScrollView>
         </BottomSheet>
+        <CustomBottomTap />
       </View>
     </>
   );
@@ -192,13 +189,15 @@ const styles = StyleSheet.create({
   },
   bottomSheetContainer: {
     flex: 1,
-    paddingHorizontal: 20,
+    paddingHorizontal: 50,
+    marginBottom: 30,
     backgroundColor: colors.WHITE,
   },
   //!FEAT: Inner
   bottomSheetInner: {
     flexGrow: 1,
     marginHorizontal: 20,
+    marginBottom: 80,
   },
   bottomSheetHeaderContainer: {
     flexDirection: 'row',
