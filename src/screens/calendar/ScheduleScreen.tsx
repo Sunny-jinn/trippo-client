@@ -21,6 +21,7 @@ import GoogleMapView from '@/components/common/GoogleMapView';
 import useScheduleStore from '@/store/useScheduleStore';
 import {formatDate} from '@/utils';
 import CustomBottomTap from '@/components/common/CustomBottomTap';
+import CustomHeader from '@/components/common/CustomHeader';
 
 interface ScheduleScreenProps {}
 
@@ -43,11 +44,7 @@ const ScheduleScreen = ({}: ScheduleScreenProps) => {
       <StatusBar backgroundColor={colors.BLUE_500} barStyle="light-content" />
       <View style={styles.topContainer}>
         <SafeAreaView>
-          <View style={styles.headerContainer}>
-            <GoBackButton />
-            <Text style={styles.headerText}>Schedule</Text>
-            <GoBackButton />
-          </View>
+          <CustomHeader title="Schedule" isWhite share />
           <View style={styles.topInnerContainer}>
             <Text style={styles.scheduleNameText}>Jeju Trip 01</Text>
             <Text style={styles.schedulePeriod}>

@@ -1,4 +1,5 @@
 import CustomButton from '@/components/common/CustomButton';
+import CustomHeader from '@/components/common/CustomHeader';
 import GoBackButton from '@/components/common/GoBackButton';
 import {calendarNavigations, colors} from '@/constants';
 import {CalendarStackParamList} from '@/navigations/stack/CalendarStackNavigator';
@@ -10,11 +11,7 @@ import {SafeAreaView, StyleSheet, View, Text, Button} from 'react-native';
 import {CalendarList} from 'react-native-calendars';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
-interface SelectDateScreenProps {}
-
-// CustomDayComponent를 외부로 정의합니다.
-
-const SelectDateScreen = ({}: SelectDateScreenProps) => {
+const SelectDateScreen = () => {
   const [startDate, setStartDate] = useState<string | null>(null);
   const [endDate, setEndDate] = useState<string | null>(null);
 
@@ -34,20 +31,15 @@ const SelectDateScreen = ({}: SelectDateScreenProps) => {
 
   const insets = useSafeAreaInsets();
 
-  // 날짜 선택 핸들러
   const handleDayPress = useCallback(
     (day: any) => {
       const {dateString} = day;
 
-      // 시작 날짜와 종료 날짜 설정 로직
       if (!startDate || (startDate && endDate)) {
-        // 시작 날짜가 설정되지 않았거나, 이미 시작과 종료 날짜가 모두 설정된 경우 초기화
         setStartDate(dateString);
-        setEndDate(null); // 종료 날짜 초기화
+        setEndDate(null);
       } else if (startDate && !endDate) {
-        // 시작 날짜가 설정되었지만 종료 날짜가 없는 경우 종료 날짜 설정
         if (dateString < startDate) {
-          // 선택한 종료 날짜가 시작 날짜 이전인 경우, 새로운 시작 날짜로 설정
           setStartDate(dateString);
         } else {
           setEndDate(dateString);
@@ -57,7 +49,6 @@ const SelectDateScreen = ({}: SelectDateScreenProps) => {
     [startDate, endDate],
   );
 
-  // 선택된 범위에 대한 marked dates 생성
   const getMarkedDates = () => {
     let markedDates: {[key: string]: any} = {};
 
@@ -102,7 +93,6 @@ const SelectDateScreen = ({}: SelectDateScreenProps) => {
     return markedDates;
   };
 
-  // 선택 초기화 함수
   const resetSelection = () => {
     setStartDate(null);
     setEndDate(null);
@@ -110,9 +100,8 @@ const SelectDateScreen = ({}: SelectDateScreenProps) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <GoBackButton />
-        <Text>Select Date</Text>
+      <View style={{marginHorizontal: 20}}>
+        <CustomHeader title="Select Date" />
       </View>
       <CalendarList
         markingType={'period'}
@@ -164,11 +153,7 @@ const styles = StyleSheet.create({
   calendarList: {
     marginTop: 30,
   },
-  header: {
-    marginHorizontal: 20,
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
+
   buttonContainer: {
     position: 'absolute',
     flexDirection: 'row',

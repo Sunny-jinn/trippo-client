@@ -1,4 +1,5 @@
 import CustomButton from '@/components/common/CustomButton';
+import CustomHeader from '@/components/common/CustomHeader';
 import GoBackButton from '@/components/common/GoBackButton';
 import {calendarNavigations, colors} from '@/constants';
 import {CalendarStackParamList} from '@/navigations/stack/CalendarStackNavigator';
@@ -73,12 +74,7 @@ const ChooseThemeScreen = ({}: ChooseThemeScreenProps) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <View style={styles.backButton}>
-          <GoBackButton />
-        </View>
-        <Text style={styles.headerText}>Choose a theme</Text>
-      </View>
+      <CustomHeader title="Choose a theme" />
       <View>
         <View style={styles.tagContainer}>
           <Text style={styles.subtitleText}>With whom</Text>
