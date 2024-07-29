@@ -1,21 +1,32 @@
 import {colors} from '@/constants';
 import React from 'react';
-import {Pressable, StyleSheet, Text} from 'react-native';
+import {Pressable, StyleSheet, Text, ViewStyle} from 'react-native';
 
 interface CustomButtonProps {
   label: string;
   onPress?: () => void;
   filled?: boolean;
+  style?: ViewStyle;
+  disabled?: boolean;
 }
 
-const CustomButton = ({label, onPress, filled = false}: CustomButtonProps) => {
+const CustomButton = ({
+  label,
+  onPress,
+  filled = false,
+  style,
+  disabled = false,
+}: CustomButtonProps) => {
   return (
     <Pressable
       onPress={onPress}
       style={({pressed}) => [
         styles.container,
         (pressed || filled) && styles.pressedButton,
-      ]}>
+        disabled && styles.disabledButton,
+        style,
+      ]}
+      disabled={disabled}>
       {({pressed}) => (
         <Text style={[styles.text, (pressed || filled) && styles.pressedText]}>
           {label}
@@ -43,6 +54,9 @@ const styles = StyleSheet.create({
   },
   pressedText: {
     color: colors.WHITE,
+  },
+  disabledButton: {
+    backgroundColor: colors.GRAY_300,
   },
 });
 

@@ -5,12 +5,15 @@ import {Pressable, StyleSheet} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const GoBackButton = () => {
+const GoBackButton = ({...props}) => {
   const navigation = useNavigation();
   const insets = useSafeAreaInsets();
 
   return (
-    <Pressable style={[styles.container]} onPress={() => navigation.goBack()}>
+    <Pressable
+      style={[styles.container]}
+      onPress={() => navigation.goBack()}
+      {...props}>
       <Ionicons name="chevron-back-outline" size={17} color={colors.BLACK} />
     </Pressable>
   );
