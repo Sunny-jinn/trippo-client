@@ -5,12 +5,14 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {StatusBar} from 'react-native';
 import HomeScreen from '@/screens/home/HomeScreen';
 import CalendarStackNavigator from './CalendarStackNavigator';
+import SearchScreen from '@/screens/search/SearchScreen';
 
 export type MainHomeStackParamList = {
   [mainNavigations.HOME]: undefined;
   [mainNavigations.CALENDAR]: undefined;
   [mainNavigations.COMMUNITY]: undefined;
   [mainNavigations.PROFILE]: undefined;
+  [mainNavigations.SEARCH]: undefined;
 };
 
 const Stack = createStackNavigator<MainHomeStackParamList>();
@@ -31,6 +33,7 @@ const MainHomeStackNavigator = () => {
           name={mainNavigations.CALENDAR}
           component={CalendarStackNavigator}
         />
+        <Stack.Screen name={mainNavigations.SEARCH} component={SearchScreen} />
       </Stack.Navigator>
     </>
   );
