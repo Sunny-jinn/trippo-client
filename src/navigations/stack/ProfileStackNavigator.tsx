@@ -1,5 +1,6 @@
 import {profileNavigations} from '@/constants';
 import EditProfileScreen from '@/screens/profile/EditProfileScreen';
+import NoticeScreen from '@/screens/profile/NoticeScreen';
 import ProfileHomeScreen from '@/screens/profile/ProfileHomeScreen';
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
@@ -35,6 +36,7 @@ const ProfileStackNavigator = () => {
         name={profileNavigations.EDIT_PROFILE}
         component={EditProfileScreen}
       />
+      <Stack.Screen name={profileNavigations.NOTICE} component={NoticeScreen} />
     </Stack.Navigator>
   );
 };

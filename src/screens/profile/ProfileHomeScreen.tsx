@@ -39,7 +39,9 @@ const ProfileHomeScreen = () => {
             <Text style={styles.profileEmail}>rlawlsdn316@gmail.com</Text>
           </View>
           <View style={styles.bottomContainer}>
-            <Pressable style={styles.bottomBox}>
+            <Pressable
+              style={styles.bottomBox}
+              onPress={() => navigations.navigate(profileNavigations.NOTICE)}>
               <Text style={styles.bottomBoxText}>Notice</Text>
               <Ionicons
                 style={{marginLeft: 'auto'}}
@@ -104,7 +106,7 @@ const ProfileHomeScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 20,
+    marginHorizontal: 20,
     marginBottom: 150,
   },
   scrollContainer: {
