@@ -73,7 +73,11 @@ const ProfileHomeScreen = () => {
               />
             </Pressable>
 
-            <Pressable style={styles.bottomBox}>
+            <Pressable
+              style={styles.bottomBox}
+              onPress={() =>
+                navigations.navigate(profileNavigations.TERMS_OF_USE)
+              }>
               <Text style={styles.bottomBoxText}>Terms of Use</Text>
               <Ionicons
                 style={{marginLeft: 'auto'}}
