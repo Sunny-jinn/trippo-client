@@ -1,5 +1,6 @@
 import {profileNavigations} from '@/constants';
 import EditProfileScreen from '@/screens/profile/EditProfileScreen';
+import NoticeDetailScreen from '@/screens/profile/NoticeDetailScreen';
 import NoticeScreen from '@/screens/profile/NoticeScreen';
 import ProfileHomeScreen from '@/screens/profile/ProfileHomeScreen';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -10,6 +11,7 @@ export type ProfileStackParamList = {
   [profileNavigations.PROFILE_HOME]: undefined;
   [profileNavigations.EDIT_PROFILE]: undefined;
   [profileNavigations.NOTICE]: undefined;
+  [profileNavigations.NOTICE_DETAIL]: {id: number};
   [profileNavigations.SERVICE_CENTER]: undefined;
   [profileNavigations.TERMS_OF_USE]: undefined;
   [profileNavigations.VERSION_INFO]: undefined;
@@ -37,6 +39,10 @@ const ProfileStackNavigator = () => {
         component={EditProfileScreen}
       />
       <Stack.Screen name={profileNavigations.NOTICE} component={NoticeScreen} />
+      <Stack.Screen
+        name={profileNavigations.NOTICE_DETAIL}
+        component={NoticeDetailScreen}
+      />
     </Stack.Navigator>
   );
 };

@@ -1,14 +1,24 @@
 import CustomHeader from '@/components/common/CustomHeader';
-import {colors} from '@/constants';
+import {colors, profileNavigations} from '@/constants';
+import {ProfileStackParamList} from '@/navigations/stack/ProfileStackNavigator';
+import {useNavigation} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
 import React from 'react';
-import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {Pressable, SafeAreaView, StyleSheet, Text, View} from 'react-native';
 
 const NoticeScreen = () => {
+  const navigation =
+    useNavigation<StackNavigationProp<ProfileStackParamList>>();
+
+  const handlePress = () => {
+    navigation.navigate(profileNavigations.NOTICE_DETAIL, {id: 0});
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <CustomHeader title="Notice" />
       <View style={styles.noticeContainer}>
-        <View style={styles.noticeBox}>
+        <Pressable style={styles.noticeBox} onPress={handlePress}>
           <View style={styles.noticeTopBox}>
             <Text style={styles.noticeTitle}>공지사항1</Text>
             <Text style={styles.noticeDate}>08:45</Text>
@@ -22,8 +32,8 @@ const NoticeScreen = () => {
               Tripoo입니다. 저희 서비스는 어쩌고 저쩌고 얄랄라 랄랄라라라라라
             </Text>
           </View>
-        </View>
-        <View style={styles.noticeBox}>
+        </Pressable>
+        <Pressable style={styles.noticeBox} onPress={handlePress}>
           <View style={styles.noticeTopBox}>
             <Text style={styles.noticeTitle}>공지사항1</Text>
             <Text style={styles.noticeDate}>08:45</Text>
@@ -37,8 +47,8 @@ const NoticeScreen = () => {
               Tripoo입니다. 저희 서비스는 어쩌고 저쩌고 얄랄라 랄랄라라라라라
             </Text>
           </View>
-        </View>
-        <View style={styles.noticeBox}>
+        </Pressable>
+        <Pressable style={styles.noticeBox} onPress={handlePress}>
           <View style={styles.noticeTopBox}>
             <Text style={styles.noticeTitle}>공지사항1</Text>
             <Text style={styles.noticeDate}>08:45</Text>
@@ -52,7 +62,7 @@ const NoticeScreen = () => {
               Tripoo입니다. 저희 서비스는 어쩌고 저쩌고 얄랄라 랄랄라라라라라
             </Text>
           </View>
-        </View>
+        </Pressable>
       </View>
     </SafeAreaView>
   );

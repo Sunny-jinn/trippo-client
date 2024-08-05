@@ -25,6 +25,7 @@ export const profileNavigations = {
   PROFILE_HOME: 'ProfileHome',
   EDIT_PROFILE: 'EditProfile',
   NOTICE: 'Notice',
+  NOTICE_DETAIL: 'NoticeDetail',
   SERVICE_CENTER: 'ServiceCenter',
   TERMS_OF_USE: 'TermsOfUse',
   VERSION_INFO: 'VersionInfo',
