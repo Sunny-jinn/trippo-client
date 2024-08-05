@@ -23,6 +23,11 @@ const ProfileHomeScreen = () => {
     useNavigation<StackNavigationProp<ProfileStackParamList>>();
 
   const {isVisible, show, hide} = useModal();
+  const {
+    isVisible: logoutVisible,
+    show: showLogout,
+    hide: hideLogout,
+  } = useModal();
 
   const handleEditPress = () => {
     navigations.navigate(profileNavigations.EDIT_PROFILE);
@@ -86,7 +91,7 @@ const ProfileHomeScreen = () => {
                 color={colors.GRAY_700}
               />
             </Pressable>
-            <Pressable style={styles.bottomBox}>
+            <Pressable style={styles.bottomBox} onPress={showLogout}>
               <Text style={styles.bottomBoxText}>Logout</Text>
               <Ionicons
                 style={{marginLeft: 'auto'}}
@@ -116,6 +121,15 @@ const ProfileHomeScreen = () => {
         icon="cloud-download-outline"
         confirm={hide}
         content={'The version currently in use is\n the latest version'}
+      />
+
+      <CustomModal
+        isVisible={logoutVisible}
+        label="Log Out"
+        icon="log-out-outline"
+        confirm={hideLogout}
+        text="Log Out"
+        content={'Are you sure you want to log out?'}
       />
     </>
   );

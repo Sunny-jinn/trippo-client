@@ -8,6 +8,7 @@ interface CustomModalProps {
   single?: boolean;
   label: string;
   content: string;
+  text?: string;
   cancel?: () => void;
   confirm: () => void;
   isVisible: boolean;
@@ -19,6 +20,7 @@ const CustomModal = ({
   label,
   content,
   isVisible,
+  text = 'Confirm',
   cancel,
   confirm,
 }: CustomModalProps) => {
@@ -42,7 +44,7 @@ const CustomModal = ({
               </Pressable>
             )}
             <Pressable onPress={confirm} style={styles.modalConfirmButton}>
-              <Text style={[styles.modalButtonText]}>Confirm</Text>
+              <Text style={[styles.modalButtonText]}>{text}</Text>
             </Pressable>
           </View>
         </View>
