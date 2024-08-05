@@ -86,7 +86,7 @@ const ProfileHomeScreen = () => {
                 color={colors.GRAY_700}
               />
             </Pressable>
-            <Pressable style={styles.bottomBox}>
+            <Pressable style={styles.bottomBox} onPress={show}>
               <Text style={styles.bottomBoxText}>Version Info</Text>
               <Ionicons
                 style={{marginLeft: 'auto'}}
@@ -105,7 +105,11 @@ const ProfileHomeScreen = () => {
               />
             </Pressable>
 
-            <Pressable style={[styles.bottomBox, {borderBottomWidth: 0}]}>
+            <Pressable
+              style={[styles.bottomBox, {borderBottomWidth: 0}]}
+              onPress={() =>
+                navigations.navigate(profileNavigations.WITHDRAWAL)
+              }>
               <Text style={styles.bottomBoxText}>Withdrawal</Text>
               <Ionicons
                 style={{marginLeft: 'auto'}}
