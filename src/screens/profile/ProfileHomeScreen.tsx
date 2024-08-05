@@ -1,6 +1,8 @@
 import CustomBottomTap from '@/components/common/CustomBottomTap';
 import CustomHeader from '@/components/common/CustomHeader';
+import CustomModal from '@/components/common/CustomModal';
 import {colors, profileNavigations} from '@/constants';
+import {useModal} from '@/hooks/useModal';
 import {ProfileStackParamList} from '@/navigations/stack/ProfileStackNavigator';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
@@ -20,8 +22,14 @@ const ProfileHomeScreen = () => {
   const navigations =
     useNavigation<StackNavigationProp<ProfileStackParamList>>();
 
+  const {isVisible, show, hide} = useModal();
+
   const handleEditPress = () => {
     navigations.navigate(profileNavigations.EDIT_PROFILE);
+  };
+
+  const handleVersionPress = () => {
+    show();
   };
 
   return (
@@ -50,7 +58,7 @@ const ProfileHomeScreen = () => {
                 color={colors.GRAY_700}
               />
             </Pressable>
-            <Pressable style={styles.bottomBox}>
+            <Pressable style={styles.bottomBox} onPress={show}>
               <Text style={styles.bottomBoxText}>Service Center</Text>
               <Ionicons
                 style={{marginLeft: 'auto'}}
@@ -100,6 +108,15 @@ const ProfileHomeScreen = () => {
           </View>
         </SafeAreaView>
       </ScrollView>
+
+      <CustomModal
+        single
+        isVisible={isVisible}
+        label="Version"
+        icon="cloud-download-outline"
+        confirm={hide}
+        content={'The version currently in use is\n the latest version'}
+      />
     </>
   );
 };
