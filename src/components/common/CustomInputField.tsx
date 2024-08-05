@@ -65,12 +65,13 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.GRAY_500,
     borderRadius: 14,
-    paddingVertical: deviceHeight > 700 ? 18 : 12,
+    paddingVertical: deviceHeight > 700 ? 16 : 12,
     paddingHorizontal: 16,
     position: 'relative',
   },
   textInput: {
     fontSize: 16,
+    lineHeight: 16,
     color: colors.BLACK,
     padding: 0,
   },
