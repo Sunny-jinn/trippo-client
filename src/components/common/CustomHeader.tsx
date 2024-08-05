@@ -8,17 +8,31 @@ interface CustomHeaderProps {
   title: string;
   isWhite?: boolean;
   share?: boolean;
+  profile?: boolean;
+  onEditPress?: () => void;
 }
 
-const CustomHeader = ({title, isWhite, share}: CustomHeaderProps) => {
+const CustomHeader = ({
+  title,
+  isWhite,
+  share,
+  profile,
+  onEditPress,
+}: CustomHeaderProps) => {
   return (
     <View style={styles.header}>
-      <GoBackButton />
+      {profile ? <View style={styles.headerBlank} /> : <GoBackButton />}
       <Text style={[styles.headerText, isWhite && styles.headerTextWhite]}>
         {title}
       </Text>
       {!share ? (
-        <View style={styles.headerBlank} />
+        !profile ? (
+          <View style={styles.headerBlank} />
+        ) : (
+          <Pressable style={styles.shareButtonContainer} onPress={onEditPress}>
+            <Ionicons name="create-outline" size={17} color={colors.BLACK} />
+          </Pressable>
+        )
       ) : (
         <Pressable style={styles.shareButtonContainer}>
           <Ionicons name="share-outline" size={17} color={colors.BLACK} />
@@ -39,6 +53,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: colors.BLACK,
     textAlign: 'center',
+    paddingTop: 8,
   },
   headerTextWhite: {
     color: colors.WHITE,

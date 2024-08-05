@@ -20,3 +20,14 @@ export const calendarNavigations = {
   CHOOSE_THEME: 'ChooseTheme',
   SCHEDULE: 'Schedule',
 } as const;
+
+export const profileNavigations = {
+  HOME: 'Home',
+  EDIT_PROFILE: 'EditProfile',
+  NOTICE: 'Notice',
+  SERVICE_CENTER: 'ServiceCenter',
+  TERMS_OF_USE: 'TermsOfUse',
+  VERSION_INFO: 'VersionInfo',
+  LOGOUT: 'Logout',
+  WITHDRAWAL: 'Withdrawal',
+} as const;

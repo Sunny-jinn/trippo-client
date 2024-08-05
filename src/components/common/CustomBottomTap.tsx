@@ -44,10 +44,12 @@ const CustomBottomTap = ({}: CustomBottomTapProps) => {
           />
           <Text style={styles.bottomTabText}>Community</Text>
         </View>
-        <View style={styles.bottomTabIcon}>
+        <Pressable
+          style={styles.bottomTabIcon}
+          onPress={() => navigations.navigate(mainNavigations.PROFILE)}>
           <Ionicons name="person-outline" size={25} color={colors.GRAY_700} />
           <Text style={styles.bottomTabText}>Profile</Text>
-        </View>
+        </Pressable>
       </View>
     </View>
   );
@@ -68,6 +70,7 @@ const styles = StyleSheet.create({
     elevation: 40,
     borderTopRightRadius: 50,
     borderTopLeftRadius: 50,
+    zIndex: 1,
   },
   bottomInner: {
     flexDirection: 'row',
