@@ -6,7 +6,7 @@ import React from 'react';
 import {StyleSheet} from 'react-native';
 
 export type ProfileStackParamList = {
-  [profileNavigations.HOME]: undefined;
+  [profileNavigations.PROFILE_HOME]: undefined;
   [profileNavigations.EDIT_PROFILE]: undefined;
   [profileNavigations.NOTICE]: undefined;
   [profileNavigations.SERVICE_CENTER]: undefined;
@@ -28,7 +28,7 @@ const ProfileStackNavigator = () => {
         headerShown: false,
       }}>
       <Stack.Screen
-        name={profileNavigations.HOME}
+        name={profileNavigations.PROFILE_HOME}
         component={ProfileHomeScreen}
       />
       <Stack.Screen

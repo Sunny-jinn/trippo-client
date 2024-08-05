@@ -22,7 +22,7 @@ export const calendarNavigations = {
 } as const;
 
 export const profileNavigations = {
-  HOME: 'Home',
+  PROFILE_HOME: 'ProfileHome',
   EDIT_PROFILE: 'EditProfile',
   NOTICE: 'Notice',
   SERVICE_CENTER: 'ServiceCenter',
