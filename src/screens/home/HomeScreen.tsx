@@ -1,23 +1,27 @@
 import React from 'react';
-import {StyleSheet, SafeAreaView, View, ScrollView} from 'react-native';
+import {StyleSheet, SafeAreaView, View, ScrollView, Text} from 'react-native';
 
-import GoogleMapView from '@/components/common/GoogleMapView';
 import {usePermission} from '@/hooks/usePermissions';
 import CustomBottomTap from '@/components/common/CustomBottomTap';
+import CustomText from '@/components/common/CustomText';
 
 const HomeScreen = () => {
   usePermission('LOCATION');
 
   return (
     <>
-      <GoogleMapView />
       <SafeAreaView style={styles.container}>
         <ScrollView
           style={styles.scrollContainer}
           scrollIndicatorInsets={{right: 1}}>
-          <View style={styles.innerContainer}></View>
+          <View style={styles.innerContainer}>
+            <CustomText weight="black">Hi</CustomText>
+            <Text>Hi</Text>
+            <CustomText weight="heavy">Hi</CustomText>
+            <CustomText weight="medium">Hi</CustomText>
+          </View>
         </ScrollView>
-        <CustomBottomTap />
+        <CustomBottomTap screen="Home" />
       </SafeAreaView>
     </>
   );

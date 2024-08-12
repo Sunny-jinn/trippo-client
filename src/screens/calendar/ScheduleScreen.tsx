@@ -120,7 +120,7 @@ const ScheduleScreen = ({}: ScheduleScreenProps) => {
             </View>
           </BottomSheetScrollView>
         </BottomSheet>
-        <CustomBottomTap />
+        <CustomBottomTap screen="Calendar" />
       </View>
     </>
   );

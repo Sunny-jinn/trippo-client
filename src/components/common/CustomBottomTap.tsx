@@ -6,9 +6,11 @@ import React from 'react';
 import {Pressable, StyleSheet, Text, View} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-interface CustomBottomTapProps {}
+interface CustomBottomTapProps {
+  screen: string;
+}
 
-const CustomBottomTap = ({}: CustomBottomTapProps) => {
+const CustomBottomTap = ({screen}: CustomBottomTapProps) => {
   const navigations =
     useNavigation<StackNavigationProp<MainHomeStackParamList>>();
 
@@ -18,16 +20,34 @@ const CustomBottomTap = ({}: CustomBottomTapProps) => {
         <Pressable
           style={styles.bottomTabIcon}
           onPress={() => navigations.navigate(mainNavigations.HOME)}>
-          <Ionicons name="home-outline" size={25} color={colors.BLUE_500} />
-          <Text style={[styles.bottomTabText, {color: colors.BLUE_500}]}>
+          <Ionicons
+            name="home-outline"
+            size={25}
+            color={screen === 'Home' ? colors.BLUE_500 : colors.GRAY_700}
+          />
+          <Text
+            style={[
+              styles.bottomTabText,
+              screen === 'Home' && {color: colors.BLUE_500},
+            ]}>
             Home
           </Text>
         </Pressable>
         <Pressable
           style={styles.bottomTabIcon}
           onPress={() => navigations.navigate(mainNavigations.CALENDAR)}>
-          <Ionicons name="calendar-outline" size={25} color={colors.GRAY_700} />
-          <Text style={styles.bottomTabText}>Calendar</Text>
+          <Ionicons
+            name="calendar-outline"
+            size={25}
+            color={screen === 'Calendar' ? colors.BLUE_500 : colors.GRAY_700}
+          />
+          <Text
+            style={[
+              styles.bottomTabText,
+              screen === 'Calendar' && {color: colors.BLUE_500},
+            ]}>
+            Calendar
+          </Text>
         </Pressable>
         <Pressable
           style={[styles.bottomTabIcon]}
@@ -40,15 +60,31 @@ const CustomBottomTap = ({}: CustomBottomTapProps) => {
           <Ionicons
             name="chatbubble-ellipses-outline"
             size={25}
-            color={colors.GRAY_700}
+            color={screen === 'Community' ? colors.BLUE_500 : colors.GRAY_700}
           />
-          <Text style={styles.bottomTabText}>Community</Text>
+          <Text
+            style={[
+              styles.bottomTabText,
+              screen === 'Community' && {color: colors.BLUE_500},
+            ]}>
+            Community
+          </Text>
         </View>
         <Pressable
           style={styles.bottomTabIcon}
           onPress={() => navigations.navigate(mainNavigations.PROFILE)}>
-          <Ionicons name="person-outline" size={25} color={colors.GRAY_700} />
-          <Text style={styles.bottomTabText}>Profile</Text>
+          <Ionicons
+            name="person-outline"
+            size={25}
+            color={screen === 'Profile' ? colors.BLUE_500 : colors.GRAY_700}
+          />
+          <Text
+            style={[
+              styles.bottomTabText,
+              screen === 'Profile' && {color: colors.BLUE_500},
+            ]}>
+            Profile
+          </Text>
         </Pressable>
       </View>
     </View>
