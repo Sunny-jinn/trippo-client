@@ -1,0 +1,9 @@
+export type FontWeight =
+  | 'black' // 900
+  | 'bold' // 700
+  | 'heavy' // 800
+  | 'light' // 400
+  | 'medium' // 500
+  | 'semibold' // 600
+  | 'thin' // 300
+  | 'ultralight'; // 200

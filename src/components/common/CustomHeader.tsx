@@ -3,6 +3,7 @@ import {Pressable, StyleSheet, Text, View} from 'react-native';
 import GoBackButton from './GoBackButton';
 import {colors} from '@/constants';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import CustomText from './CustomText';
 
 interface CustomHeaderProps {
   title: string;
@@ -22,9 +23,11 @@ const CustomHeader = ({
   return (
     <View style={styles.header}>
       {profile ? <View style={styles.headerBlank} /> : <GoBackButton />}
-      <Text style={[styles.headerText, isWhite && styles.headerTextWhite]}>
+      <CustomText
+        style={[styles.headerText, isWhite && styles.headerTextWhite]}
+        weight="semibold">
         {title}
-      </Text>
+      </CustomText>
       {!share ? (
         !profile ? (
           <View style={styles.headerBlank} />
