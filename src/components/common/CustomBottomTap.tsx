@@ -56,7 +56,9 @@ const CustomBottomTap = ({screen}: CustomBottomTapProps) => {
             <Ionicons name="search-outline" size={25} color={colors.WHITE} />
           </View>
         </Pressable>
-        <View style={styles.bottomTabIcon}>
+        <Pressable
+          style={styles.bottomTabIcon}
+          onPress={() => navigations.navigate(mainNavigations.COMMUNITY)}>
           <Ionicons
             name="chatbubble-ellipses-outline"
             size={25}
@@ -69,7 +71,7 @@ const CustomBottomTap = ({screen}: CustomBottomTapProps) => {
             ]}>
             Community
           </Text>
-        </View>
+        </Pressable>
         <Pressable
           style={styles.bottomTabIcon}
           onPress={() => navigations.navigate(mainNavigations.PROFILE)}>

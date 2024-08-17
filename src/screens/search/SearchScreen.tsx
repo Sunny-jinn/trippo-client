@@ -1,6 +1,7 @@
 import CustomButton from '@/components/common/CustomButton';
 import CustomHeader from '@/components/common/CustomHeader';
 import CustomInputField from '@/components/common/CustomInputField';
+import CustomSearchField from '@/components/common/CustomSearchField';
 import {colors} from '@/constants';
 import React, {useRef} from 'react';
 import {
@@ -30,21 +31,7 @@ const SearchScreen = ({}: SearchScreenProps) => {
       <StatusBar backgroundColor={colors.WHITE} barStyle="dark-content" />
       <SafeAreaView style={styles.container}>
         <CustomHeader title="Search" />
-        <Pressable onPress={pressHandler}>
-          <View style={styles.searchInputContainer}>
-            <Ionicons
-              style={styles.searchIcon}
-              name="search-outline"
-              size={25}
-              color={colors.GRAY_700}
-            />
-            <TextInput
-              ref={inputRef}
-              style={styles.searchInputBox}
-              placeholder="Search Places"
-            />
-          </View>
-        </Pressable>
+        <CustomSearchField placeholder="Search Places" />
         <View style={styles.bottomContainer}>
           <Text style={styles.bottomText}>Recent searches</Text>
           <Pressable style={styles.bottomClearButton}>

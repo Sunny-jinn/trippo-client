@@ -23,7 +23,6 @@ const CustomText = ({style, weight, ...rest}: CustomTextProps) => {
 const styles = StyleSheet.create({
   customStyle: {
     color: colors.BLACK,
-    fontSize: 30,
   },
 });
 

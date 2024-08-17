@@ -9,6 +9,7 @@ export const colors = {
   GRAY_100: '#F4F4FF',
 
   ORANGE: '#F58221',
+  ORANGE_100: '#FFFBF8',
 
   BLUE_500: '#5957F7',
   BLUE_100: '#F2F2FF',

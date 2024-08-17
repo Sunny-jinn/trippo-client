@@ -3,6 +3,8 @@ import EditProfileScreen from '@/screens/profile/EditProfileScreen';
 import NoticeDetailScreen from '@/screens/profile/NoticeDetailScreen';
 import NoticeScreen from '@/screens/profile/NoticeScreen';
 import ProfileHomeScreen from '@/screens/profile/ProfileHomeScreen';
+import TermsofUseScreen from '@/screens/profile/TermsofUseScreen';
+import WithdrawalScreen from '@/screens/profile/WithdrawalScreen';
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
 import {StyleSheet} from 'react-native';
@@ -42,6 +44,14 @@ const ProfileStackNavigator = () => {
       <Stack.Screen
         name={profileNavigations.NOTICE_DETAIL}
         component={NoticeDetailScreen}
+      />
+      <Stack.Screen
+        name={profileNavigations.TERMS_OF_USE}
+        component={TermsofUseScreen}
+      />
+      <Stack.Screen
+        name={profileNavigations.WITHDRAWAL}
+        component={WithdrawalScreen}
       />
     </Stack.Navigator>
   );

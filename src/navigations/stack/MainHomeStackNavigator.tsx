@@ -7,6 +7,7 @@ import HomeScreen from '@/screens/home/HomeScreen';
 import CalendarStackNavigator from './CalendarStackNavigator';
 import SearchScreen from '@/screens/search/SearchScreen';
 import ProfileStackNavigator from './ProfileStackNavigator';
+import CommunityStackNavigator from './CommunityStackNavigator';
 
 export type MainHomeStackParamList = {
   [mainNavigations.HOME]: undefined;
@@ -35,6 +36,10 @@ const MainHomeStackNavigator = () => {
           component={CalendarStackNavigator}
         />
         <Stack.Screen name={mainNavigations.SEARCH} component={SearchScreen} />
+        <Stack.Screen
+          name={mainNavigations.COMMUNITY}
+          component={CommunityStackNavigator}
+        />
         <Stack.Screen
           name={mainNavigations.PROFILE}
           component={ProfileStackNavigator}

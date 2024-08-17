@@ -32,3 +32,9 @@ export const profileNavigations = {
   LOGOUT: 'Logout',
   WITHDRAWAL: 'Withdrawal',
 } as const;
+
+export const communityNavigations = {
+  COMMUNITY_HOME: 'CommunityHome',
+  POST_DETAILS: 'PostDetails',
+  COMMUNITY_SEARCH: 'CommunitySearch',
+} as const;

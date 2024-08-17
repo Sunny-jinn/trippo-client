@@ -11,6 +11,7 @@ interface CustomHeaderProps {
   share?: boolean;
   profile?: boolean;
   onEditPress?: () => void;
+  hide?: boolean;
 }
 
 const CustomHeader = ({
@@ -19,15 +20,17 @@ const CustomHeader = ({
   share,
   profile,
   onEditPress,
+  hide = false,
 }: CustomHeaderProps) => {
   return (
     <View style={styles.header}>
-      {profile ? <View style={styles.headerBlank} /> : <GoBackButton />}
+      {profile || hide ? <View style={styles.headerBlank} /> : <GoBackButton />}
       <CustomText
         style={[styles.headerText, isWhite && styles.headerTextWhite]}
         weight="semibold">
         {title}
       </CustomText>
+
       {!share ? (
         !profile ? (
           <View style={styles.headerBlank} />
