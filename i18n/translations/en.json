@@ -31,5 +31,15 @@
     "email": "Email",
     "password": "Password",
     "passwordConfirm": "Confirm Password"
+  },
+  "home": {
+    "explore": "Explore the",
+    "beautiful": "Beautiful",
+    "best": "Best Destination",
+    "jeju": "Jeju!",
+    "viewAll": "View all",
+    "hotPlace": "Hot & Best Places",
+    "community": "Community of travelers",
+    "tip": "Travel tips"
   }
 }

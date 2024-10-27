@@ -11,30 +11,34 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {colors} from '@/constants';
 
 interface CustomDropdownProps {
-  options: string[];
-  defaultValue?: string;
+  options: {label: string; value: string}[];
+  selectedValue: string;
+  onValueChange: (value: string) => void;
 }
 
 const deviceHeight = Dimensions.get('screen').height;
 
 const CustomDropdown = ({
   options,
-  defaultValue = 'English',
+  selectedValue,
+  onValueChange,
 }: CustomDropdownProps) => {
-  const [selectedValue, setSelectedValue] = useState(defaultValue);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const handleSelect = (value: string) => {
-    setSelectedValue(value);
+    onValueChange(value);
     setIsDropdownOpen(false);
   };
+
+  const selectedLabel =
+    options.find(option => option.value === selectedValue)?.label || '';
 
   return (
     <View style={styles.dropdownWrapper}>
       <TouchableOpacity
         style={styles.dropdownContainer}
         onPress={() => setIsDropdownOpen(prev => !prev)}>
-        <Text style={styles.selectedText}>{selectedValue}</Text>
+        <Text style={styles.selectedText}>{selectedLabel}</Text>
         <Ionicons
           name={isDropdownOpen ? 'chevron-up-outline' : 'chevron-down-outline'}
           size={20}
@@ -46,12 +50,12 @@ const CustomDropdown = ({
         <View style={styles.optionsContainer}>
           <FlatList
             data={options}
-            keyExtractor={item => item}
+            keyExtractor={item => item.value}
             renderItem={({item}) => (
               <TouchableOpacity
                 style={styles.optionContainer}
-                onPress={() => handleSelect(item)}>
-                <Text style={styles.optionText}>{item}</Text>
+                onPress={() => handleSelect(item.value)}>
+                <Text style={styles.optionText}>{item.label}</Text>
               </TouchableOpacity>
             )}
           />

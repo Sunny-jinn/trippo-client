@@ -6,7 +6,7 @@ import {colors, communityNavigations} from '@/constants';
 import {CommunityStackParamList} from '@/navigations/stack/CommunityStackNavigator';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
-import React from 'react';
+import React, {useRef, useState} from 'react';
 import {
   Image,
   Pressable,
@@ -20,18 +20,30 @@ import {
 interface CommunityHomeScreenProps {}
 
 const CommunityHomeScreen = ({}: CommunityHomeScreenProps) => {
+  const inputRef = useRef(null);
+  const [isSearching, setIsSearching] = useState<Boolean>(false);
+
   const navigation =
     useNavigation<StackNavigationProp<CommunityStackParamList>>();
+
+  const searchPressHandler = () => {
+    setIsSearching(true);
+  };
   return (
     <>
       <SafeAreaView style={styles.container}>
         <ScrollView contentContainerStyle={styles.contentContainer}>
           <CustomHeader title="Community" hide />
           <View style={styles.communityContainer}>
-            <CustomSearchField placeholder="Search" />
+            <CustomSearchField
+              placeholder="Search"
+              ref={inputRef}
+              setVisible={searchPressHandler}
+              returnKeyType="search"
+            />
             <View style={styles.trippoPickContainer}>
               <CustomText weight="semibold" style={styles.subTitleText}>
-                Trippo's Pick
+                {!isSearching ? "Trippo's Pick" : 'Recent Search'}
               </CustomText>
 
               <Pressable

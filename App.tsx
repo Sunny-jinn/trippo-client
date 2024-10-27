@@ -7,6 +7,8 @@ import {SafeAreaView, Text, useColorScheme} from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {QueryClientProvider} from '@tanstack/react-query';
+import {queryClient} from '@/api/queryClient';
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -19,17 +21,19 @@ function App(): React.JSX.Element {
   useEffect(() => {
     const timer = setTimeout(() => {
       SplashScreen.hide();
-    }, 2000);
+    }, 20);
 
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <I18nextProvider i18n={i18n}>
-      <NavigationContainer>
-        <RootNavigator />
-      </NavigationContainer>
-    </I18nextProvider>
+    <QueryClientProvider client={queryClient}>
+      <I18nextProvider i18n={i18n}>
+        <NavigationContainer>
+          <RootNavigator />
+        </NavigationContainer>
+      </I18nextProvider>
+    </QueryClientProvider>
   );
 }
 

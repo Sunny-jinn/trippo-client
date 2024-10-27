@@ -1,32 +1,42 @@
 import CustomHeader from '@/components/common/CustomHeader';
-import {colors} from '@/constants';
+import {colors, profileNavigations} from '@/constants';
+import {useGetNoticeDetail} from '@/hooks/queries/useGetNotice';
+import {ProfileStackParamList} from '@/navigations/stack/ProfileStackNavigator';
+import {formatNoticeDate} from '@/utils';
+import {StackScreenProps} from '@react-navigation/stack';
 import React from 'react';
 import {SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
-
-interface NoticeDetailScreenProps {
-  id?: number;
-}
 
 const DUMMY =
   'You will get a complete travel package on the beaches. Packages in the form of airline tickets, recommended Hotel rooms, Transportation, Have you ever been on holiday to the Greek ETC... You will get a complete travel package on the beaches. Packages in the form of airline tickets, recommended Hotel rooms, Transportation, Have you ever been on holiday to the Greek ETC... You will get a complete travel package on the beaches. Packages in the form of airline tickets, recommended Hotel rooms, Transportation, Have you ever been on holiday to the Greek ETC... You will get a complete travel package on the beaches. Packages in the form of airline tickets, recommended Hotel rooms, Transportation, Have you ever been on holiday to the Greek ETC...';
 
-const NoticeDetailScreen = ({id}: NoticeDetailScreenProps) => {
+type NoticeDetailScreenProps = StackScreenProps<
+  ProfileStackParamList,
+  typeof profileNavigations.NOTICE_DETAIL
+>;
+
+const NoticeDetailScreen = ({route}: NoticeDetailScreenProps) => {
+  const {id} = route.params;
+  const {data, isPending, isError} = useGetNoticeDetail(id);
+
+  if (isPending || isError) {
+    return <></>;
+  }
+
   return (
     <>
       <ScrollView style={styles.container}>
         <CustomHeader title="Notice Details" />
         <SafeAreaView style={styles.noticeDetailContainer}>
           <View style={styles.noticeDetailTopContainer}>
-            <Text style={styles.noticeTitleText}>공지사항 6</Text>
-            <Text style={styles.noticeDateText}>작성일 : 2020-20-20</Text>
+            <Text style={styles.noticeTitleText}>{data.title}</Text>
+            <Text style={styles.noticeDateText}>
+              작성일 : {formatNoticeDate(data.updated_at)}
+            </Text>
           </View>
           <View style={styles.noticeDetailBottomContainer}>
             <View style={styles.noticeDetailBox}>
-              <Text style={styles.noticeSubTitleText}>About Destination</Text>
-              <Text style={styles.noticeContentText}>{DUMMY}</Text>
-            </View>
-            <View style={styles.noticeDetailBox}>
-              <Text style={styles.noticeSubTitleText}>About Destination</Text>
+              <Text style={styles.noticeSubTitleText}>{data.contents}</Text>
               <Text style={styles.noticeContentText}>{DUMMY}</Text>
             </View>
           </View>

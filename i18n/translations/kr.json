@@ -1,0 +1,92 @@
+{
+  "LanguageSelect": {
+    "title": "언어 선택",
+    "subTitle": "서비스를 이용하시면서\n사용하실 언어를 선택해 주세요."
+  },
+  "login": {
+    "title": "로그인",
+    "subTitle": "서비스를 계속 이용하시려면 로그인 해주세요.",
+    "forgotPassword": "비밀번호를 잊으셨나요?",
+    "noAccount": "계정이 없으신가요?",
+    "signup": "회원가입"
+  },
+  "forgotPassword": {
+    "title": "비밀번호 찾기",
+    "subTitle": "새로운 비밀번호를 받으실\n이메일 계정을 입력해주세요.",
+    "modalTitle": "이메일을 확인해주세요.",
+    "modalSubTitle": "새로운 비밀번호를 입력해 주신\n이메일로 전송해 드렸습니다."
+  },
+  "verificationCode": {
+    "title": "인증코드 입력",
+    "subTitle": "이메일로 전송된 인증 코드를 확인해 입력해주세요.",
+    "text": "인증 코드"
+  },
+  "signup": {
+    "title": "회원가입",
+    "subTitle": "서비스를 계속 이용하시려면 회원가입 해주세요.",
+    "text": "비밀번호는 8자 이상 설정해주세요."
+  },
+  "placeholder": {
+    "id": "아이디",
+    "email": "이메일",
+    "password": "비밀번호",
+    "passwordConfirm": "비밀번호 확인"
+  },
+  "home": {
+    "planning": "여행 계획 세우기",
+    "explore": "경험해보세요!",
+    "beautiful": "아름다운",
+    "jeju": "제주!",
+    "best": "추천 여행 코스",
+    "viewAll": "더 보기",
+    "hotPlace": "요즘 핫한 플레이스",
+    "community": "여행 커뮤니티",
+    "tip": "여행 꿀팁"
+  },
+  "schedule": {
+    "selectDate": "날짜 선택",
+    "theme": "여행 테마 선택",
+    "schedule": "일정",
+    "search": "검색",
+    "recent": "최근 검색어",
+    "reset": "초기화",
+    "edit": "편집",
+    "addPlace": "장소 추가",
+    "placeDetail": "장소 상세",
+    "addSchedule": "일정 추가",
+    "delete": "삭제",
+    "done": "완료",
+    "modalTitle": "일정 삭제",
+    "modalContent": "정말 추가하신 일정을\n삭제하시겠습니까?"
+  },
+  "modal": {
+    "cancel": "취소",
+    "delete": "삭제",
+    "confirm": "확인"
+  },
+  "mypage": {
+    "profile": "프로필",
+    "notice": "공지사항",
+    "center": "고객 센터",
+    "service": "서비스 이용약관",
+    "version": "버전 정보",
+    "logout": "로그아웃",
+    "withdrawal": "회원탈퇴",
+    "editProfile": "프로필 수정",
+    "nickname": "닉네임",
+    "language": "언어 설정",
+    "loginInfo": "로그인 정보",
+    "update": "수정",
+    "updateProfile": "이미지 수정",
+    "noticeDetail": "공지사항 상세",
+    "date": "작성일",
+    "modalVersion": "현재 사용하고 계신 버전이\n최신버전입니다.",
+    "modalVersionUpdate": "새로운 버전으로 업데이트 하시겠어요?",
+    "modalVersionConfirm": "업데이트",
+    "modalLogout": "정말 로그아웃 이어서 진행하시겠어요?",
+    "withdrawalTitle": "회원탈퇴 안내",
+    "withdrawalSubTitle": "다음과 같은 사항에 유의해 주세요",
+    "withdrawalContent": "탈퇴 후에는 회원님의 모든 계정 정보가 삭제되며, 복구가 불가능합니다.\n또한, 게시글, 댓글, 좋아요 등의 데이터는 모두 삭제됩니다.\n일정 기간 내에 동일한 이메일로 재가입이 제한될 수 있습니다.",
+    "withdrawalConfirm": "회원 탈퇴"
+  }
+}

@@ -36,7 +36,7 @@ const CustomModal = ({
 
           <View style={styles.modalButtonBox}>
             {!single && (
-              <Pressable onPress={confirm} style={styles.modalCancelButton}>
+              <Pressable onPress={cancel} style={styles.modalCancelButton}>
                 <Text
                   style={[styles.modalButtonText, styles.modalButtonCancel]}>
                   Cancel

@@ -12,17 +12,19 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 interface CustomSearchFieldProps extends TextInputProps {
   placeholder?: string;
+  setVisible?: () => void;
 }
 
 const CustomSearchField = forwardRef(
   (
-    {placeholder, ...props}: CustomSearchFieldProps,
+    {placeholder, setVisible, ...props}: CustomSearchFieldProps,
     ref?: ForwardedRef<TextInput>,
   ) => {
     const inputRef = useRef<TextInput | null>(null);
 
     const pressHandler = () => {
       inputRef.current?.focus();
+      setVisible?.();
     };
 
     return (
@@ -38,6 +40,8 @@ const CustomSearchField = forwardRef(
             ref={ref ? mergeRefs(inputRef, ref) : inputRef}
             style={styles.searchInputBox}
             placeholder={placeholder}
+            onPress={setVisible}
+            {...props}
           />
         </View>
       </Pressable>

@@ -959,6 +959,8 @@ PODS:
   - React-Mapbuffer (0.74.3):
     - glog
     - React-debug
+  - react-native-cookies (6.2.1):
+    - React-Core
   - react-native-encrypted-storage (4.0.3):
     - React-Core
   - react-native-google-maps (1.17.3):
@@ -1304,6 +1306,7 @@ DEPENDENCIES:
   - React-jsitracing (from `../node_modules/react-native/ReactCommon/hermes/executor/`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - React-Mapbuffer (from `../node_modules/react-native/ReactCommon`)
+  - "react-native-cookies (from `../node_modules/@react-native-cookies/cookies`)"
   - react-native-encrypted-storage (from `../node_modules/react-native-encrypted-storage`)
   - react-native-google-maps (from `../node_modules/react-native-maps`)
   - react-native-maps (from `../node_modules/react-native-maps`)
@@ -1407,6 +1410,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/logger"
   React-Mapbuffer:
     :path: "../node_modules/react-native/ReactCommon"
+  react-native-cookies:
+    :path: "../node_modules/@react-native-cookies/cookies"
   react-native-encrypted-storage:
     :path: "../node_modules/react-native-encrypted-storage"
   react-native-google-maps:
@@ -1509,6 +1514,7 @@ SPEC CHECKSUMS:
   React-jsitracing: 6b3c8c98313642140530f93c46f5a6ca4530b446
   React-logger: fa92ba4d3a5d39ac450f59be2a3cec7b099f0304
   React-Mapbuffer: 9f68550e7c6839d01411ac8896aea5c868eff63a
+  react-native-cookies: f54fcded06bb0cda05c11d86788020b43528a26c
   react-native-encrypted-storage: db300a3f2f0aba1e818417c1c0a6be549038deb7
   react-native-google-maps: 4fcc7464c6e1337af1463af6813466a1f6ebee8a
   react-native-maps: 5d563f21238f8e8fea24ae6ff2772bfde17f6f34

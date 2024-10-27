@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {
@@ -17,6 +17,12 @@ import CustomInputField from '@/components/common/CustomInputField';
 import {AuthStackParamList} from '@/navigations/stack/AuthStackNavigator';
 import {authNavigations, colors} from '@/constants';
 import {useTranslation} from 'react-i18next';
+import {useForm} from '@/hooks/useForm';
+import {validateLogin} from '@/utils';
+import {useAuth} from '@/hooks/queries/useAuth';
+import {getAccessToken} from '@/api';
+import axios from 'axios';
+import {axiosInstance} from '@/api/axios';
 
 interface LoginScreenProps {}
 
@@ -34,6 +40,20 @@ const LoginScreen = ({}: LoginScreenProps) => {
     navigation.navigate(authNavigations.FORGOT_PASSWORD);
   };
 
+  const {loginMutation} = useAuth();
+
+  const submitHandler = () => {
+    loginMutation.mutate(login.values);
+  };
+
+  const login = useForm({
+    initialValue: {
+      email: '',
+      password: '',
+    },
+    validate: validateLogin,
+  });
+
   return (
     <SafeAreaView style={styles.container}>
       <GoBackButton />
@@ -45,11 +65,13 @@ const LoginScreen = ({}: LoginScreenProps) => {
           returnKeyType="next"
           blurOnSubmit={false}
           onSubmitEditing={() => passwordRef.current?.focus()}
+          {...login.getTextInputProps('email')}
         />
         <CustomInputField
           placeholder={t('placeholder.password')}
           password
           ref={passwordRef}
+          {...login.getTextInputProps('password')}
         />
       </View>
       <View style={styles.findPasswordContainer}>
@@ -57,7 +79,7 @@ const LoginScreen = ({}: LoginScreenProps) => {
           <Text style={styles.findPassword}>{t('login.forgotPassword')}</Text>
         </Pressable>
       </View>
-      <CustomButton label={t('login.title')} filled />
+      <CustomButton label={t('login.title')} filled onPress={submitHandler} />
       <View style={styles.signUpContainer}>
         <Text style={styles.noAccountText}>{t('login.noAccount')}</Text>
         <Pressable onPress={handleSignUpPress}>

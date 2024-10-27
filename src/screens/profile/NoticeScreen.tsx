@@ -1,77 +1,65 @@
 import CustomHeader from '@/components/common/CustomHeader';
 import {colors, profileNavigations} from '@/constants';
+import {useGetNotice} from '@/hooks/queries/useGetNotice';
 import {ProfileStackParamList} from '@/navigations/stack/ProfileStackNavigator';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import React from 'react';
-import {Pressable, SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {
+  Pressable,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 
 const NoticeScreen = () => {
   const navigation =
     useNavigation<StackNavigationProp<ProfileStackParamList>>();
 
-  const handlePress = () => {
-    navigation.navigate(profileNavigations.NOTICE_DETAIL, {id: 0});
+  const handlePress = (id: number) => {
+    navigation.navigate(profileNavigations.NOTICE_DETAIL, {id: id});
   };
 
+  const {data, isPending, isError} = useGetNotice();
+
+  if (isPending || isError) {
+    return <></>;
+  }
+
   return (
-    <SafeAreaView style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <CustomHeader title="Notice" />
       <View style={styles.noticeContainer}>
-        <Pressable style={styles.noticeBox} onPress={handlePress}>
-          <View style={styles.noticeTopBox}>
-            <Text style={styles.noticeTitle}>공지사항1</Text>
-            <Text style={styles.noticeDate}>08:45</Text>
-          </View>
-          <View style={styles.noticeBottomBox}>
-            <Text
-              style={styles.noticeDescription}
-              numberOfLines={2}
-              ellipsizeMode="tail">
-              안녕하세요, Trippo입니다. 저희 서비스는 어쩌고 저쩌고
-              Tripoo입니다. 저희 서비스는 어쩌고 저쩌고 얄랄라 랄랄라라라라라
-            </Text>
-          </View>
-        </Pressable>
-        <Pressable style={styles.noticeBox} onPress={handlePress}>
-          <View style={styles.noticeTopBox}>
-            <Text style={styles.noticeTitle}>공지사항1</Text>
-            <Text style={styles.noticeDate}>08:45</Text>
-          </View>
-          <View style={styles.noticeBottomBox}>
-            <Text
-              style={styles.noticeDescription}
-              numberOfLines={2}
-              ellipsizeMode="tail">
-              안녕하세요, Trippo입니다. 저희 서비스는 어쩌고 저쩌고
-              Tripoo입니다. 저희 서비스는 어쩌고 저쩌고 얄랄라 랄랄라라라라라
-            </Text>
-          </View>
-        </Pressable>
-        <Pressable style={styles.noticeBox} onPress={handlePress}>
-          <View style={styles.noticeTopBox}>
-            <Text style={styles.noticeTitle}>공지사항1</Text>
-            <Text style={styles.noticeDate}>08:45</Text>
-          </View>
-          <View style={styles.noticeBottomBox}>
-            <Text
-              style={styles.noticeDescription}
-              numberOfLines={2}
-              ellipsizeMode="tail">
-              안녕하세요, Trippo입니다. 저희 서비스는 어쩌고 저쩌고
-              Tripoo입니다. 저희 서비스는 어쩌고 저쩌고 얄랄라 랄랄라라라라라
-            </Text>
-          </View>
-        </Pressable>
+        {data.map(({id, contents, title}) => (
+          <Pressable
+            style={styles.noticeBox}
+            onPress={() => handlePress(id)}
+            key={id}>
+            <View style={styles.noticeTopBox}>
+              <Text style={styles.noticeTitle}>{title}</Text>
+              {/* <Text style={styles.noticeDate}>08:45</Text> */}
+            </View>
+            <View style={styles.noticeBottomBox}>
+              <Text
+                style={styles.noticeDescription}
+                numberOfLines={2}
+                ellipsizeMode="tail">
+                {contents}
+              </Text>
+            </View>
+          </Pressable>
+        ))}
       </View>
-    </SafeAreaView>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginHorizontal: 20,
+    paddingHorizontal: 20,
   },
   noticeContainer: {
     gap: 16,

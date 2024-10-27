@@ -1,12 +1,15 @@
 import CustomBottomTap from '@/components/common/CustomBottomTap';
 import CustomHeader from '@/components/common/CustomHeader';
 import CustomModal from '@/components/common/CustomModal';
+import CustomText from '@/components/common/CustomText';
 import {colors, profileNavigations} from '@/constants';
+import {useAuth} from '@/hooks/queries/useAuth';
 import {useModal} from '@/hooks/useModal';
 import {ProfileStackParamList} from '@/navigations/stack/ProfileStackNavigator';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import React from 'react';
+import {useTranslation} from 'react-i18next';
 import {
   Image,
   Pressable,
@@ -23,6 +26,9 @@ const ProfileHomeScreen = () => {
     useNavigation<StackNavigationProp<ProfileStackParamList>>();
 
   const {isVisible, show, hide} = useModal();
+
+  const {t} = useTranslation();
+
   const {
     isVisible: logoutVisible,
     show: showLogout,
@@ -37,25 +43,39 @@ const ProfileHomeScreen = () => {
     show();
   };
 
+  const {logoutMutation} = useAuth();
+
+  const handleLogout = () => {
+    logoutMutation.mutate(null);
+  };
+
   return (
     <>
-      <CustomBottomTap />
+      <CustomBottomTap screen="Profile" />
       <ScrollView style={styles.scrollContainer}>
         <SafeAreaView style={styles.container}>
-          <CustomHeader title="Profile" profile onEditPress={handleEditPress} />
+          <CustomHeader
+            title={t('mypage.profile')}
+            profile
+            onEditPress={handleEditPress}
+          />
           <View style={styles.topContainer}>
             <Image
               source={require('@/assets/search_thumbnail.png')}
               style={styles.profileImage}
             />
-            <Text style={styles.profileNickname}>Trippo</Text>
-            <Text style={styles.profileEmail}>rlawlsdn316@gmail.com</Text>
+            <CustomText style={styles.profileNickname} weight="medium">
+              Trippo
+            </CustomText>
+            <CustomText style={styles.profileEmail} weight="light">
+              rlawlsdn316@gmail.com
+            </CustomText>
           </View>
           <View style={styles.bottomContainer}>
             <Pressable
               style={styles.bottomBox}
               onPress={() => navigations.navigate(profileNavigations.NOTICE)}>
-              <Text style={styles.bottomBoxText}>Notice</Text>
+              <Text style={styles.bottomBoxText}>{t('mypage.notice')}</Text>
               <Ionicons
                 style={{marginLeft: 'auto'}}
                 name="chevron-forward-outline"
@@ -64,7 +84,7 @@ const ProfileHomeScreen = () => {
               />
             </Pressable>
             <Pressable style={styles.bottomBox} onPress={show}>
-              <Text style={styles.bottomBoxText}>Service Center</Text>
+              <Text style={styles.bottomBoxText}>{t('mypage.center')}</Text>
               <Ionicons
                 style={{marginLeft: 'auto'}}
                 name="chevron-forward-outline"
@@ -78,7 +98,7 @@ const ProfileHomeScreen = () => {
               onPress={() =>
                 navigations.navigate(profileNavigations.TERMS_OF_USE)
               }>
-              <Text style={styles.bottomBoxText}>Terms of Use</Text>
+              <Text style={styles.bottomBoxText}>{t('mypage.service')}</Text>
               <Ionicons
                 style={{marginLeft: 'auto'}}
                 name="chevron-forward-outline"
@@ -87,7 +107,7 @@ const ProfileHomeScreen = () => {
               />
             </Pressable>
             <Pressable style={styles.bottomBox} onPress={show}>
-              <Text style={styles.bottomBoxText}>Version Info</Text>
+              <Text style={styles.bottomBoxText}>{t('mypage.version')}</Text>
               <Ionicons
                 style={{marginLeft: 'auto'}}
                 name="chevron-forward-outline"
@@ -96,7 +116,7 @@ const ProfileHomeScreen = () => {
               />
             </Pressable>
             <Pressable style={styles.bottomBox} onPress={showLogout}>
-              <Text style={styles.bottomBoxText}>Logout</Text>
+              <Text style={styles.bottomBoxText}>{t('mypage.logout')}</Text>
               <Ionicons
                 style={{marginLeft: 'auto'}}
                 name="chevron-forward-outline"
@@ -110,7 +130,7 @@ const ProfileHomeScreen = () => {
               onPress={() =>
                 navigations.navigate(profileNavigations.WITHDRAWAL)
               }>
-              <Text style={styles.bottomBoxText}>Withdrawal</Text>
+              <Text style={styles.bottomBoxText}>{t('mypage.withdrawal')}</Text>
               <Ionicons
                 style={{marginLeft: 'auto'}}
                 name="chevron-forward-outline"
@@ -135,7 +155,8 @@ const ProfileHomeScreen = () => {
         isVisible={logoutVisible}
         label="Log Out"
         icon="log-out-outline"
-        confirm={hideLogout}
+        cancel={hideLogout}
+        confirm={handleLogout}
         text="Log Out"
         content={'Are you sure you want to log out?'}
       />
@@ -162,7 +183,6 @@ const styles = StyleSheet.create({
   },
   profileNickname: {
     fontSize: 24,
-    fontWeight: '500',
     color: colors.BLACK,
     marginVertical: 8,
   },

@@ -39,6 +39,8 @@ const ScheduleScreen = ({}: ScheduleScreenProps) => {
     stiffness: 500,
   });
 
+  console.log(selectedTags);
+
   return (
     <>
       <StatusBar backgroundColor={colors.BLUE_500} barStyle="light-content" />
@@ -51,16 +53,20 @@ const ScheduleScreen = ({}: ScheduleScreenProps) => {
               {`${formatDate(startDate)} - ${formatDate(endDate)}`}
             </Text>
             <View style={styles.scheduleTagsContainer}>
-              <View style={styles.scheduleTag}>
-                <Text style={styles.scheduleTagText}>
-                  {Object.keys(selectedTags.Whom)[0]}
-                </Text>
-              </View>
-              <View style={styles.scheduleTag}>
-                <Text style={styles.scheduleTagText}>
-                  {Object.keys(selectedTags.Style)[0]}
-                </Text>
-              </View>
+              {Object.keys(selectedTags.Whom).length !== 0 && (
+                <View style={styles.scheduleTag}>
+                  <Text style={styles.scheduleTagText}>
+                    {Object.keys(selectedTags.Whom)[0]}
+                  </Text>
+                </View>
+              )}
+              {Object.keys(selectedTags.Style).length !== 0 && (
+                <View style={styles.scheduleTag}>
+                  <Text style={styles.scheduleTagText}>
+                    {Object.keys(selectedTags.Style)[0]}
+                  </Text>
+                </View>
+              )}
             </View>
           </View>
         </SafeAreaView>

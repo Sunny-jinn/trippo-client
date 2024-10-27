@@ -12,6 +12,7 @@ const GoogleMapView = ({...props}: GoogleMapViewProps) => {
       {...props}
       showsUserLocation
       showsMyLocationButton
+      customMapStyle={customMapStyle}
     />
   );
 };
@@ -21,5 +22,33 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
+
+const customMapStyle = [
+  {
+    featureType: 'poi.school',
+    stylers: [
+      {
+        visibility: 'off',
+      },
+    ],
+  },
+  {
+    featureType: 'road.highway',
+    stylers: [
+      {
+        visibility: 'simplified',
+      },
+    ],
+  },
+  {
+    featureType: 'road.highway',
+    elementType: 'labels.text',
+    stylers: [
+      {
+        color: '#ffffff',
+      },
+    ],
+  },
+];
 
 export default GoogleMapView;
