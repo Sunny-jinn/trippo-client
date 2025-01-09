@@ -29,11 +29,11 @@
 
 > Frontend Repository : https://github.com/StudioSadang/trippo-client<br />
 > Backend Repository : https://github.com/StudioSadang/trippo-api <br />
-> AI Repository : https://github.com/StudioSadang/trippo-ai <br />
+> AI Repository : https://github.com/StudioSadang/trippo-ai 
 
 # Project Introduction
 
-### **🥰 최고의 제주도 여행을 만들어 드립니다.**
+### **🥰 최고의 제주도 여행을 만들어 드립니다**
 
 제주도 여행을 고민중이신가요? 예산 문제로 계획을 잡는 데 어려움이 있으신가요? 저희 Trippo가 여러분들의 고민을 해결해드리겠습니다.
 
@@ -47,7 +47,7 @@ Trippo는 사용자의 예산을 기반으로 최적화된 제주도 여행 일�
 
 ### **📖 여행자 커뮤니티로 공유하고 소통하세요**
 
-여행의 즐거움은 경험 공유에서 시작됩니다. Trippo의 커뮤니티 기능을 통해 다른 여행자들과 정보를 나누고,ㅏ 여러분만의 특별한 여행 이야기를 공유해보세요!
+여행의 즐거움은 경험 공유에서 시작됩니다. Trippo의 커뮤니티 기능을 통해 다른 여행자들과 정보를 나누고, 여러분만의 특별한 여행 이야기를 공유해보세요!
 
 여행 준비가 막막하다면 지금 바로 Trippo와 함께하세요! 🏝️
 
